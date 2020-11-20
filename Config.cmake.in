@@ -1,0 +1,9 @@
+@PACKAGE_INIT@
+
+foreach(_comp ${IEEE2030-5_FIND_COMPONENTS})
+  if (NOT _comp IN_LIST _supported_components)
+    set(IEEE2030-5_FOUND False)
+    set(IEEE2030-5_NOT_FOUND_MESSAGE "Unsupported component: ${_comp}")
+  endif()
+  include("${CMAKE_CURRENT_LIST_DIR}/IEEE2030-5${_comp}Targets.cmake")
+endforeach()

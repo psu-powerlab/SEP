@@ -1,0 +1,3 @@
+repository='external project URL'
+module='https://standards.ieee.org/content/dam/ieee-standards/standards/web/download/2030.5-2018_downloads.zip'
+tag=''

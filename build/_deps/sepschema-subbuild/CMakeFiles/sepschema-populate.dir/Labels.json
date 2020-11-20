@@ -1,0 +1,46 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "/home/tslay/Dev/IEEE_2030-5_Resources/build/_deps/sepschema-subbuild/CMakeFiles/sepschema-populate"
+		},
+		{
+			"file" : "/home/tslay/Dev/IEEE_2030-5_Resources/build/_deps/sepschema-subbuild/CMakeFiles/sepschema-populate.rule"
+		},
+		{
+			"file" : "/home/tslay/Dev/IEEE_2030-5_Resources/build/_deps/sepschema-subbuild/CMakeFiles/sepschema-populate-complete.rule"
+		},
+		{
+			"file" : "/home/tslay/Dev/IEEE_2030-5_Resources/build/_deps/sepschema-subbuild/sepschema-populate-prefix/src/sepschema-populate-stamp/sepschema-populate-install.rule"
+		},
+		{
+			"file" : "/home/tslay/Dev/IEEE_2030-5_Resources/build/_deps/sepschema-subbuild/sepschema-populate-prefix/src/sepschema-populate-stamp/sepschema-populate-mkdir.rule"
+		},
+		{
+			"file" : "/home/tslay/Dev/IEEE_2030-5_Resources/build/_deps/sepschema-subbuild/sepschema-populate-prefix/src/sepschema-populate-stamp/sepschema-populate-download.rule"
+		},
+		{
+			"file" : "/home/tslay/Dev/IEEE_2030-5_Resources/build/_deps/sepschema-subbuild/sepschema-populate-prefix/src/sepschema-populate-stamp/sepschema-populate-update.rule"
+		},
+		{
+			"file" : "/home/tslay/Dev/IEEE_2030-5_Resources/build/_deps/sepschema-subbuild/sepschema-populate-prefix/src/sepschema-populate-stamp/sepschema-populate-patch.rule"
+		},
+		{
+			"file" : "/home/tslay/Dev/IEEE_2030-5_Resources/build/_deps/sepschema-subbuild/sepschema-populate-prefix/src/sepschema-populate-stamp/sepschema-populate-configure.rule"
+		},
+		{
+			"file" : "/home/tslay/Dev/IEEE_2030-5_Resources/build/_deps/sepschema-subbuild/sepschema-populate-prefix/src/sepschema-populate-stamp/sepschema-populate-build.rule"
+		},
+		{
+			"file" : "/home/tslay/Dev/IEEE_2030-5_Resources/build/_deps/sepschema-subbuild/sepschema-populate-prefix/src/sepschema-populate-stamp/sepschema-populate-test.rule"
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"sepschema-populate"
+		],
+		"name" : "sepschema-populate"
+	}
+}

@@ -1,0 +1,3 @@
+file(REMOVE_RECURSE
+  "libIEEE2030-5.a"
+)
