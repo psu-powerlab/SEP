@@ -30,7 +30,6 @@ FetchContent_MakeAvailable(googletest SEPSchema)
 
 # Find preinstall packages
 find_package(Boost REQUIRED)
-find_package(XercesC REQUIRED)
 
 add_subdirectory(src)
 
