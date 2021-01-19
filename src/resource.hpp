@@ -11,7 +11,7 @@ class Resource
     public:
         Resource (std::string href);
         ~Resource ();
-    private:
+    public:
         std::string href_ = ""; // optional
 };
 }; // namespace

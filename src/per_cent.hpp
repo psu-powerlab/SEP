@@ -11,7 +11,7 @@ class PerCent
     public:
         PerCent (unsigned int value);
         ~PerCent ();
-    private:
+    public:
         unsigned int max_percent_ = 10000;
         unsigned int value_;
 };

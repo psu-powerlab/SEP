@@ -15,7 +15,7 @@ class RandomizeEvent
             unsigned int randomize_start = 0
         );
         ~RandomizeEvent ();
-    private:
+    public:
         sep::Event* event_;
         unsigned int randomize_duration_;
         unsigned int randomize_start_;

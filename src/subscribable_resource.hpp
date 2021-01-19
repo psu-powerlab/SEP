@@ -21,7 +21,7 @@ class SubscribableResource
             sep::SubscribableType* subscribable
         );
         ~SubscribableResource ();
-    private:
+    public:
         sep::Resource* resource_;
         sep::SubscribableType* subscribable_;
 };

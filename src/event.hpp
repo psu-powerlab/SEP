@@ -21,7 +21,7 @@ class Event
             std::string reason = ""
         );
         ~Event ();
-    private:
+    public:
         unsigned long long int creation_time_;
         sep::EventStatus* event_status_;
         unsigned int interval_;

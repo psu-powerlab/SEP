@@ -34,7 +34,7 @@ class TargetReduction
             unsigned int value
         );
         ~TargetReduction ();
-    private:
+    public:
         sep::UnitType* unit_type_;
         unsigned int value_;
 };

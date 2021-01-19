@@ -31,7 +31,7 @@ class Offset
             
         );
         ~Offset ();
-    private:
+    public:
         unsigned int cooling_offset_;
         unsigned int heating_offset_;
         sep::PerCent* load_adjustment_percentage_offset_;

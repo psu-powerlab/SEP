@@ -18,7 +18,7 @@ class RespondableSubscribableIdentifiedObject
             sep::SubscribableType subscribable = sep::SubscribableType::NONE
         );
         ~RespondableSubscribableIdentifiedObject ();
-    private:
+    public:
         sep::RespondableResource* respondable_resource_;
         std::string mrid_;
         std::string description_;

@@ -20,7 +20,7 @@ class FlowReservationResponse
             std::string mrid_type
         );
         ~FlowReservationResponse ();
-    private:
+    public:
         sep::Event* event_;
         sep::SignedRealEnergy* signed_real_energy_; // energy in watt-hours
         sep::ActivePower* active_power_;            // power in watts

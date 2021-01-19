@@ -11,7 +11,7 @@ class FixedVAR
     public:
         FixedVAR (sep::DERUnitRefType* ref_type, sep::SignedPerCent* value);
         ~FixedVAR ();
-    private:
+    public:
         sep::DERUnitRefType* ref_type_;
         sep::SignedPerCent* value_;
 };

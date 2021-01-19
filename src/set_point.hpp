@@ -24,7 +24,7 @@ class SetPoint
             unsigned int heating_set_point = 0
         );
         ~SetPoint ();
-    private:
+    public:
         unsigned int cooling_set_point_;
         unsigned int heating_set_point_;
 };

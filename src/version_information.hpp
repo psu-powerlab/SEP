@@ -10,7 +10,7 @@ class VersionInformation
         VersionInformation ();
         ~VersionInformation ();
         
-    private:
+    public:
         std::string default_namespace_;
         std::string element_form_default_;
         std::string schema_location_;

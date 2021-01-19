@@ -15,7 +15,7 @@ class ReactivePower
             unsigned int value
         );
         ~ReactivePower ();
-    private:
+    public:
         sep::PowerOfTenMultiplierType* multiplier_;
         unsigned int value_;
 };

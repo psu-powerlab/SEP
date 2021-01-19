@@ -16,7 +16,7 @@ class PowerFactorWithExcitation
             sep::PowerOfTenMultiplierType* multiplier
         );
         ~PowerFactorWithExcitation ();
-    private:
+    public:
         unsigned int displacement_;
         bool excitation_;
         sep::PowerOfTenMultiplierType* multiplier_;

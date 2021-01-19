@@ -21,7 +21,7 @@ class EventStatus
     public:
         EventStatus (sep::CurrentStatus* current_status);
         ~EventStatus ();
-    private:
+    public:
         sep::CurrentStatus* current_status_;
 };
 }; // namespace

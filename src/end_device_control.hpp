@@ -23,7 +23,7 @@ class EndDeviceControl
             sep::SetPoint* set_point = nullptr
         );
         ~EndDeviceControl ();
-    private:
+    public:
         sep::RandomizeEvent* randomize_event_;
         unsigned int appliance_load_reduction_;
         sep::DeviceCategoryType* device_category_;

@@ -16,7 +16,7 @@ class DERControl
             sep::DeviceCategoryType* device_category = nullptr
         );
         ~DERControl ();
-    private:
+    public:
         sep::RandomizeEvent* randomize_event_;
         sep::DERControlBase* der_control_base_;
         sep::DeviceCategoryType* device_category_;

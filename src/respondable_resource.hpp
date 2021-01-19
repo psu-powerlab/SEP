@@ -21,7 +21,7 @@ class RespondableResource
                 = sep::ResponseRequired::RECIEVED
         );
         ~RespondableResource ();
-    private:
+    public:
         sep::Resource* resource_;
         std::string reply_to_;
         sep::ResponseRequired response_required_;

@@ -15,7 +15,7 @@ class FreqDroopType
             unsigned int open_loop_tms
         );
         ~FreqDroopType ();
-    private:
+    public:
         unsigned long int dbof_;        // over-freq thousandths of Hz
         unsigned long int dbuf_;        // under-freq thousandths of Hz
         unsigned int kof_;              // per-unit change over-freq

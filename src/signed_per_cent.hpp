@@ -10,7 +10,7 @@ class SignedPerCent
     public:
         SignedPerCent (int value);
         ~SignedPerCent ();
-    private:
+    public:
         unsigned int max_percent_ = 10000;
         int value_;
 };

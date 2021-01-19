@@ -12,7 +12,7 @@ class ActivePower
     public:
         ActivePower (unsigned int multiplier, int value);
         ~ActivePower ();
-    private:
+    public:
         unsigned int multiplier_;
         int value_;
 };

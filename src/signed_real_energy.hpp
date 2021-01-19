@@ -8,7 +8,7 @@ class SignedRealEnergy
     public:
         SignedRealEnergy (unsigned int multiplier, long long int value);
         ~SignedRealEnergy ();
-    private:
+    public:
         unsigned int multiplier_;
         long long int value_;       // Watt-hours
 };

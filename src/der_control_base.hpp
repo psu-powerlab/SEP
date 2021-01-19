@@ -15,7 +15,6 @@ namespace sep
 class DERControlBase
 {
     public:
-
         DERControlBase (
             bool op_mod_connect = false,
             bool op_mod_energize = false,
@@ -43,7 +42,7 @@ class DERControlBase
             unsigned int ramp_tms = 0
         );
         ~DERControlBase ();
-    private:
+    public:
         bool op_mod_connect_;
         bool op_mod_energize_;
         sep::PowerFactorWithExcitation* op_mod_fixed_pf_absorb_w_;

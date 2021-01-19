@@ -5,7 +5,7 @@ cmake_minimum_required(VERSION 3.14...3.19)
 # This is your project statement. You should always list languages;
 project(
   IEEE2030-5
-  VERSION 1.0)
+  VERSION 1.1)
 
 # specify the C++ standard
 set(CMAKE_CXX_STANDARD 11)
@@ -30,7 +30,6 @@ FetchContent_MakeAvailable(googletest SEPSchema)
 
 # Find preinstall packages
 find_package(Boost REQUIRED)
-find_package(XercesC REQUIRED)
 
 add_subdirectory(src)
 
@@ -38,7 +37,7 @@ add_subdirectory(src)
 include(CMakePackageConfigHelpers)
 
 # set version
-set(version 1.0.0)
+set(version 1.1.0)
 
 # generate the version file for the config file
 write_basic_package_version_file(
