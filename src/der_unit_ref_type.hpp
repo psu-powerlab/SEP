@@ -1,10 +1,11 @@
 #ifndef __DER_UNIT_REF_TYPE_H__
 #define __DER_UNIT_REF_TYPE_H__
+#include <cstdint>
 
 namespace sep
 {
 // Specifies context for interpreting percent values
-enum class DERUnitRefType
+enum class DERUnitRefType : uint8_t
 {
     NA,
     SET_MAX_W,

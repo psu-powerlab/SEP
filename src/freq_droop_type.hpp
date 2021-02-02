@@ -1,5 +1,6 @@
 #ifndef __FREQ_DROOP_TYPE_H__
 #define __FREQ_DROOP_TYPE_H__
+#include <cstdint>
 
 namespace sep
 {
@@ -8,19 +9,19 @@ class FreqDroopType
 {
     public:
         FreqDroopType (
-            unsigned long int dbof,
-            unsigned long int dbuf,
-            unsigned int kof,
-            unsigned int kuf,
-            unsigned int open_loop_tms
+            uint32_t dbof,
+            uint32_t dbuf,
+            uint16_t kof,
+            uint16_t kuf,
+            uint16_t open_loop_tms
         );
         ~FreqDroopType ();
     public:
-        unsigned long int dbof_;        // over-freq thousandths of Hz
-        unsigned long int dbuf_;        // under-freq thousandths of Hz
-        unsigned int kof_;              // per-unit change over-freq
-        unsigned int kuf_;              // per-unit change under-freq
-        unsigned int open_loop_tms_;    // A value of 0 is used to mean no limit
+        uint32_t dbof_;             // over-freq thousandths of Hz
+        uint32_t dbuf_;             // under-freq thousandths of Hz
+        uint16_t kof_;              // per-unit change over-freq
+        uint16_t kuf_;              // per-unit change under-freq
+        uint16_t open_loop_tms_;    // A value of 0 is used to mean no limit
 };
 }; // namespace
 #endif // __FREQ_DROOP_TYPE_H__

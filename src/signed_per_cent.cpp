@@ -2,7 +2,7 @@
 
 namespace sep
 {
-SignedPerCent::SignedPerCent(int value) 
+SignedPerCent::SignedPerCent(int16_t value) 
 {
     value_ = value;
 }

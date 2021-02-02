@@ -2,7 +2,7 @@
 
 namespace sep
 {
-ActivePower::ActivePower(unsigned int multiplier, int value) 
+ActivePower::ActivePower(sep::PowerOfTenMultiplierType* multiplier, int16_t value) 
 {
     multiplier_ = multiplier;
     value_ = value;
@@ -10,6 +10,6 @@ ActivePower::ActivePower(unsigned int multiplier, int value)
 
 ActivePower::~ActivePower() 
 {
-    // dtor
+    delete multiplier_;
 }
 } // namespace

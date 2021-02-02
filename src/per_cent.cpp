@@ -2,7 +2,7 @@
 
 namespace sep
 {
-PerCent::PerCent(unsigned int value) 
+PerCent::PerCent(uint16_t value) 
 {
     value_ = value;
 }

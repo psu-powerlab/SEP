@@ -1,5 +1,6 @@
 #ifndef __PER_CENT_H__
 #define __PER_CENT_H__
+#include <cstdint>
 
 namespace sep
 {
@@ -9,11 +10,11 @@ namespace sep
 class PerCent
 {
     public:
-        PerCent (unsigned int value);
+        PerCent (uint16_t value);
         ~PerCent ();
     public:
-        unsigned int max_percent_ = 10000;
-        unsigned int value_;
+        uint16_t max_percent_ = 10000;
+        uint16_t value_;
 };
 }; // namespace
 #endif // __PER_CENT_H__

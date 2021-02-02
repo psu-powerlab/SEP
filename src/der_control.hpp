@@ -1,6 +1,6 @@
 #ifndef __DER_CONTROL_H__
 #define __DER_CONTROL_H__
-#include "randomize_event.hpp"
+#include "randomizable_event.hpp"
 #include "der_control_base.hpp"
 #include "device_category_type.hpp"
 
@@ -11,13 +11,13 @@ class DERControl
 {
     public:
         DERControl (
-            sep::RandomizeEvent* randomize_event,
+            sep::RandomizableEvent* randomize_event,
             sep::DERControlBase* der_control_base,
             sep::DeviceCategoryType* device_category = nullptr
         );
         ~DERControl ();
     public:
-        sep::RandomizeEvent* randomize_event_;
+        sep::RandomizableEvent* randomize_event_;
         sep::DERControlBase* der_control_base_;
         sep::DeviceCategoryType* device_category_;
 };

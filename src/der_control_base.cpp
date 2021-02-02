@@ -1,4 +1,5 @@
 #include "der_control_base.hpp"
+#include <cstdint>
 
 namespace sep
 {
@@ -26,7 +27,7 @@ DERControlBase::DERControlBase(
     std::string op_mod_volt_watt,
     std::string op_mod_watt_pf,
     std::string op_mod_watt_var,
-    unsigned int ramp_tms) 
+    uint16_t ramp_tms) 
 {
     op_mod_connect_ = op_mod_connect;
     op_mod_energize_ = op_mod_energize;

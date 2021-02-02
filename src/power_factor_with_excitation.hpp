@@ -1,6 +1,7 @@
 #ifndef __POWER_FACTOR_WITH_EXCITATION_H__
 #define __POWER_FACTOR_WITH_EXCITATION_H__
 #include "power_of_ten_multiplier_type.hpp"
+#include <cstdint>
 
 namespace sep
 {
@@ -11,13 +12,13 @@ class PowerFactorWithExcitation
 {
     public:
         PowerFactorWithExcitation (
-            unsigned int displacment,
+            uint16_t displacment,
             bool excitation,
             sep::PowerOfTenMultiplierType* multiplier
         );
         ~PowerFactorWithExcitation ();
     public:
-        unsigned int displacement_;
+        uint16_t displacement_;
         bool excitation_;
         sep::PowerOfTenMultiplierType* multiplier_;
 };

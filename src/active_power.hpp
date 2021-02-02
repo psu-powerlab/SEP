@@ -1,5 +1,7 @@
 #ifndef __ACTIVE_POWER_H__
 #define __ACTIVE_POWER_H__
+#include <cstdint>
+#include "power_of_ten_multiplier_type.hpp"
 
 namespace sep
 {
@@ -10,11 +12,11 @@ namespace sep
 class ActivePower
 {
     public:
-        ActivePower (unsigned int multiplier, int value);
+        ActivePower (sep::PowerOfTenMultiplierType* multiplier, int16_t value);
         ~ActivePower ();
     public:
-        unsigned int multiplier_;
-        int value_;
+        sep::PowerOfTenMultiplierType* multiplier_;
+        int16_t value_;  // watts
 };
 }; // namespace sep
 

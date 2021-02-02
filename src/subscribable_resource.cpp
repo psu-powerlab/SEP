@@ -2,17 +2,17 @@
 
 namespace sep
 {
-SubscribableResource::SubscribableResource(
-    sep::Resource* resource, 
-    sep::SubscribableType* subscribable) 
-{
-    resource_ = resource;
-    subscribable_ = subscribable;
-}
+    SubscribableResource::SubscribableResource(
+        sep::Resource* resource, 
+        sep::SubscribableType* subscribable) 
+    {
+        resource_ = resource;
+        subscribable_ = subscribable;
+    }
 
-SubscribableResource::~SubscribableResource() 
-{
-    delete resource_;
-    delete subscribable_;
-}
+    SubscribableResource::~SubscribableResource() 
+    {
+        delete resource_;
+        delete subscribable_;
+    }
 } // namespace

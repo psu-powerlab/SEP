@@ -2,6 +2,8 @@
 #define __EVENT_H__
 #include <string>
 #include "event_status.hpp"
+#include "time_type.hpp"
+#include "date_time_interval.hpp"
 
 namespace sep
 {
@@ -12,22 +14,22 @@ class Event
 {
     public:
         Event (
-            unsigned long int creation_time,
+            sep::TimeType* creation_time,
             sep::EventStatus* event_status,
-            unsigned int interval,
-            unsigned long long int date_time,
+            sep::DateTimeInterval* interval,
+            sep::TimeType* date_time,
             bool potentially_superseded,
-            unsigned long long int potentially_superseded_time = 0,
+            sep::TimeType* potentially_superseded_time = 0,
             std::string reason = ""
         );
         ~Event ();
     public:
-        unsigned long long int creation_time_;
+        sep::TimeType* creation_time_;
         sep::EventStatus* event_status_;
-        unsigned int interval_;
-        unsigned long long int date_time_;
+        sep::DateTimeInterval* interval_;
+        sep::TimeType* date_time_;
         bool potentially_superseded_;
-        unsigned long long int potentially_superseded_time_;
+        sep::TimeType* potentially_superseded_time_;
         std::string reason_;
 };
 } // namespace

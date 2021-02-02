@@ -2,13 +2,13 @@
 
 namespace sep
 {
-Resource::Resource(std::string href) 
-{
-    href_ = href;
-}
+    Resource::Resource(std::string href) 
+    {
+        href_ = href;
+    }
 
-Resource::~Resource() 
-{
-    // dtor
-}
+    Resource::~Resource() 
+    {
+        // dtor
+    }
 } // namespace

@@ -4,7 +4,7 @@
 namespace sep
 {
 EndDeviceControl::EndDeviceControl(
-    sep::RandomizeEvent* randomize_event,
+    sep::RandomizableEvent* randomize_event,
     unsigned int appliance_load_reduction,
     sep::DeviceCategoryType* device_category,
     bool dr_program_mandatory,

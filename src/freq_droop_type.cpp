@@ -3,11 +3,11 @@
 namespace sep
 {
 FreqDroopType::FreqDroopType(
-    unsigned long int dbof,
-    unsigned long int dbuf,
-    unsigned int kof,
-    unsigned int kuf,
-    unsigned int open_loop_tms) 
+    uint32_t dbof,
+    uint32_t dbuf,
+    uint16_t kof,
+    uint16_t kuf,
+    uint16_t open_loop_tms) 
 {
     dbof_ = dbof;
     dbuf_ = dbuf;

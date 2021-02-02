@@ -3,7 +3,7 @@
 namespace sep
 {
 PowerFactorWithExcitation::PowerFactorWithExcitation(
-    unsigned int displacment,
+    uint16_t displacment,
     bool excitation,
     sep::PowerOfTenMultiplierType* multiplier) 
 {

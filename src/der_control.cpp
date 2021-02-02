@@ -3,7 +3,7 @@
 namespace sep
 {
 DERControl::DERControl(
-    sep::RandomizeEvent* randomize_event,
+    sep::RandomizableEvent* randomize_event,
     sep::DERControlBase* der_control_base,
     sep::DeviceCategoryType* device_category) 
 {

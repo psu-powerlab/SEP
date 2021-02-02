@@ -4,7 +4,7 @@ namespace sep
 {
 ReactivePower::ReactivePower(
     sep::PowerOfTenMultiplierType* multiplier,
-    unsigned int value) 
+    uint16_t value) 
 {
     multiplier_ = multiplier;
     value_ = value;

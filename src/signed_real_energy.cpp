@@ -1,16 +1,15 @@
 #include "signed_real_energy.hpp"
 
-
 namespace sep
 {
-SignedRealEnergy::SignedRealEnergy(unsigned int multiplier, long long int value) 
-{
-    multiplier_ = multiplier;
-    value_ = value_;
-}
+    SignedRealEnergy::SignedRealEnergy(sep::PowerOfTenMultiplierType* multiplier, int64_t value) 
+    {
+        multiplier_ = multiplier;
+        value_ = value;
+    }
 
-SignedRealEnergy::~SignedRealEnergy() 
-{
-    // dtor
-}
+    SignedRealEnergy::~SignedRealEnergy() 
+    {
+        delete multiplier_;
+    }
 } // namespace

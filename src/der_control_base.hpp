@@ -1,6 +1,7 @@
 #ifndef __DER_CONTROL_BASE_H__
 #define __DER_CONTROL_BASE_H__
 #include <string>
+#include <cstdint>
 #include "power_factor_with_excitation.hpp"
 #include "fixed_var.hpp"
 #include "signed_per_cent.hpp"
@@ -39,7 +40,7 @@ class DERControlBase
             std::string op_mod_volt_watt = "",
             std::string op_mod_watt_pf = "",
             std::string op_mod_watt_var = "",
-            unsigned int ramp_tms = 0
+            uint16_t ramp_tms = 0
         );
         ~DERControlBase ();
     public:
@@ -66,7 +67,7 @@ class DERControlBase
         std::string op_mod_volt_watt_;
         std::string op_mod_watt_pf_;
         std::string op_mod_watt_var_;
-        unsigned int ramp_tms_;  // ramp time, in hundredths of a second
+        uint16_t ramp_tms_;  // ramp time, in hundredths of a second
 };
 }; // namespace
 #endif // __DER_CONTROL_BASE_H__

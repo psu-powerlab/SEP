@@ -1,6 +1,7 @@
 #ifndef __END_DEVICE_CONTROL_H__
 #define __END_DEVICE_CONTROL_H__
-#include "randomize_event.hpp"
+#include <cstdint>
+#include "randomizable_event.hpp"
 #include "device_category_type.hpp"
 #include "offset.hpp"
 #include "set_point.hpp"
@@ -12,7 +13,7 @@ class EndDeviceControl
 {
     public:
         EndDeviceControl (
-            sep::RandomizeEvent* randomize_event,
+            sep::RandomizableEvent* randomize_event,
             unsigned int appliance_load_reduction,
             sep::DeviceCategoryType* device_category,
             bool dr_program_mandatory,
@@ -24,7 +25,7 @@ class EndDeviceControl
         );
         ~EndDeviceControl ();
     public:
-        sep::RandomizeEvent* randomize_event_;
+        sep::RandomizableEvent* randomize_event_;
         unsigned int appliance_load_reduction_;
         sep::DeviceCategoryType* device_category_;
         bool dr_program_mandatory_;

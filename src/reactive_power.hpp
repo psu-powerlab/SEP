@@ -1,6 +1,7 @@
 #ifndef __REACTIVE_POWER_H__
 #define __REACTIVE_POWER_H__
 #include "power_of_ten_multiplier_type.hpp"
+#include <cstdint>
 
 namespace sep
 {
@@ -12,12 +13,12 @@ class ReactivePower
     public:
         ReactivePower (
             sep::PowerOfTenMultiplierType* multiplier,
-            unsigned int value
+            uint16_t value
         );
         ~ReactivePower ();
     public:
         sep::PowerOfTenMultiplierType* multiplier_;
-        unsigned int value_;
+        uint16_t value_;
 };
 }; // namespace
 #endif // __REACTIVE_POWER_H__

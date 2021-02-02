@@ -5,8 +5,8 @@ namespace sep
 {
 Offset::Offset(
     sep::PerCent* load_adjustment_percentage_offset,
-    unsigned int cooling_offset,
-    unsigned int heating_offset
+    uint8_t cooling_offset,
+    uint8_t heating_offset
     ) 
 {
     load_adjustment_percentage_offset_ = load_adjustment_percentage_offset;
