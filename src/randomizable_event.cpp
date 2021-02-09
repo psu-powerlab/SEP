@@ -4,8 +4,8 @@ namespace sep
 {
     RandomizableEvent::RandomizableEvent(
         sep::Event* event,
-        sep::OneHourRangeType randomize_duration = 0,
-        sep::OneHourRangeType randomize_start = 0) 
+        sep::OneHourRangeType randomize_duration,
+        sep::OneHourRangeType randomize_start) 
     {
         event_ = event;
         randomize_duration_ = randomize_duration;
