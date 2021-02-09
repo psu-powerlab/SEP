@@ -13,14 +13,14 @@ class RandomizableEvent
     public:
         RandomizableEvent (
             sep::Event* event,
-            sep::OneHourRangeType* randomize_duration = 0,
-            sep::OneHourRangeType* randomize_start = 0
+            sep::OneHourRangeType randomize_duration = 0,
+            sep::OneHourRangeType randomize_start = 0
         );
         ~RandomizableEvent ();
     public:
         sep::Event* event_;
-        sep::OneHourRangeType* randomize_duration_;  
-        sep::OneHourRangeType* randomize_start_; 
+        sep::OneHourRangeType randomize_duration_;  
+        sep::OneHourRangeType randomize_start_; 
 };
 }; // namespace
 #endif // __RANDOMIZE_EVENT_H__
