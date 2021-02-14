@@ -20,19 +20,19 @@ namespace sep
         FlowReservationRequest(
             sep::TimeType creation_time,
             uint16_t duration_requested,
-            sep::SignedRealEnergy energy_requested,
-            sep::DateTimeInterval interval_requested,
-            sep::ActivePower power_requested,
-            sep::RequestStatus request_status);
+            sep::SignedRealEnergy *energy_requested,
+            sep::DateTimeInterval *interval_requested,
+            sep::ActivePower *power_requested,
+            sep::RequestStatus *request_status);
         ~FlowReservationRequest();
 
     public:
         sep::TimeType creation_time_;
         uint16_t duration_requested_;
-        sep::SignedRealEnergy energy_requested_;
-        sep::DateTimeInterval interval_requested_;
-        sep::ActivePower power_requested_;
-        sep::RequestStatus request_status_;
+        sep::SignedRealEnergy *energy_requested_;
+        sep::DateTimeInterval *interval_requested_;
+        sep::ActivePower *power_requested_;
+        sep::RequestStatus *request_status_;
     };
 } // namespace sep
 
