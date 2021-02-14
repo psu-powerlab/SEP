@@ -11,5 +11,5 @@ namespace sep
         CONDITIONAL,
         BOTH
     };
-}; // namespace
+};     // namespace sep
 #endif // __SUBSCRIBABLE_TYPE_H__

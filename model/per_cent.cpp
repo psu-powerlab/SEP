@@ -2,13 +2,13 @@
 
 namespace sep
 {
-PerCent::PerCent(uint16_t value) 
-{
-    value_ = value;
-}
+    PerCent::PerCent(uint16_t value)
+    {
+        value_ = value;
+    }
 
-PerCent::~PerCent() 
-{
-    // dtor
-}
-} // namespace
+    PerCent::~PerCent()
+    {
+        // dtor
+    }
+} // namespace sep

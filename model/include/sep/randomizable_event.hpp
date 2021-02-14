@@ -6,21 +6,21 @@
 
 namespace sep
 {
-// An Event that can indicate time ranges over which the start time 
-// and duration SHALL be randomized.    
-class RandomizableEvent
-{
+    // An Event that can indicate time ranges over which the start time
+    // and duration SHALL be randomized.
+    class RandomizableEvent
+    {
     public:
-        RandomizableEvent (
-            sep::Event* event,
+        RandomizableEvent(
+            sep::Event *event,
             sep::OneHourRangeType randomize_duration = 0,
-            sep::OneHourRangeType randomize_start = 0
-        );
-        ~RandomizableEvent ();
+            sep::OneHourRangeType randomize_start = 0);
+        ~RandomizableEvent();
+
     public:
-        sep::Event* event_;
-        sep::OneHourRangeType randomize_duration_;  
-        sep::OneHourRangeType randomize_start_; 
-};
-}; // namespace
+        sep::Event *event_;
+        sep::OneHourRangeType randomize_duration_;
+        sep::OneHourRangeType randomize_start_;
+    };
+};     // namespace sep
 #endif // __RANDOMIZE_EVENT_H__

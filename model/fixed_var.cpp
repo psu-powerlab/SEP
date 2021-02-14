@@ -2,15 +2,14 @@
 
 namespace sep
 {
-    FixedVAR::FixedVAR(sep::DERUnitRefType* ref_type, sep::SignedPerCent* value) 
+    FixedVAR::FixedVAR(sep::DERUnitRefType ref_type, sep::SignedPerCent *value)
     {
         ref_type_ = ref_type;
         value_ = value;
     }
 
-    FixedVAR::~FixedVAR() 
+    FixedVAR::~FixedVAR()
     {
-        delete ref_type_;
         delete value_;
     }
-} // namespace
+} // namespace sep

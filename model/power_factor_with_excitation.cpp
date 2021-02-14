@@ -2,18 +2,18 @@
 
 namespace sep
 {
-PowerFactorWithExcitation::PowerFactorWithExcitation(
-    uint16_t displacment,
-    bool excitation,
-    sep::PowerOfTenMultiplierType* multiplier) 
-{
-    displacement_ = displacment;
-    excitation_ = excitation;
-    multiplier_ = multiplier;
-}
+    PowerFactorWithExcitation::PowerFactorWithExcitation(
+        uint16_t displacment,
+        bool excitation,
+        sep::PowerOfTenMultiplierType multiplier)
+    {
+        displacement_ = displacment;
+        excitation_ = excitation;
+        multiplier_ = multiplier;
+    }
 
-PowerFactorWithExcitation::~PowerFactorWithExcitation() 
-{
-    delete multiplier_;
+    PowerFactorWithExcitation::~PowerFactorWithExcitation()
+    {
+        // do nothing
+    } // namespace
 }
-} // namespace

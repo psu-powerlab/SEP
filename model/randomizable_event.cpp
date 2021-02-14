@@ -3,17 +3,17 @@
 namespace sep
 {
     RandomizableEvent::RandomizableEvent(
-        sep::Event* event,
+        sep::Event *event,
         sep::OneHourRangeType randomize_duration,
-        sep::OneHourRangeType randomize_start) 
+        sep::OneHourRangeType randomize_start)
     {
         event_ = event;
         randomize_duration_ = randomize_duration;
         randomize_start_ = randomize_start;
     }
 
-    RandomizableEvent::~RandomizableEvent() 
+    RandomizableEvent::~RandomizableEvent()
     {
         delete event_;
     }
-} // namespace
+} // namespace sep

@@ -1,15 +1,14 @@
 #include "include/sep/flow_reservation_request.hpp"
 
-
 namespace sep
 {
     FlowReservationRequest::FlowReservationRequest(
-        sep::TimeType* creation_time,
+        sep::TimeType creation_time,
         uint16_t duration_requested,
-        sep::SignedRealEnergy* energy_requested,
-        sep::DateTimeInterval* interval_requested,
-        sep::ActivePower* power_requested,
-        sep::RequestStatus* request_status) 
+        sep::SignedRealEnergy energy_requested,
+        sep::DateTimeInterval interval_requested,
+        sep::ActivePower power_requested,
+        sep::RequestStatus request_status)
     {
         creation_time_ = creation_time;
         duration_requested_ = duration_requested;
@@ -18,13 +17,9 @@ namespace sep
         power_requested_ = power_requested;
         request_status_ = request_status;
     }
-    
-    FlowReservationRequest::~FlowReservationRequest() 
+
+    FlowReservationRequest::~FlowReservationRequest()
     {
-        delete creation_time_;
-        delete energy_requested_;
-        delete interval_requested_;
-        delete power_requested_;
-        delete request_status_;
+        //do nothing
     }
-}
+} // namespace sep

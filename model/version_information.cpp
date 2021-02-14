@@ -3,7 +3,7 @@
 
 namespace sep
 {
-    VersionInformation::VersionInformation() 
+    VersionInformation::VersionInformation()
     {
         default_namespace_ = "urn::ieee:std::2030.5:ns";
         element_form_default_ = "qualified";
@@ -13,8 +13,8 @@ namespace sep
         version_ = "2.1.0";
     }
 
-    VersionInformation::~VersionInformation() 
+    VersionInformation::~VersionInformation()
     {
-        
+        // do nothing
     }
-} // namespace
+} // namespace sep

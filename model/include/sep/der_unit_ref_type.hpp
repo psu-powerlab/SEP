@@ -4,17 +4,17 @@
 
 namespace sep
 {
-// Specifies context for interpreting percent values
-enum class DERUnitRefType : uint8_t
-{
-    NA,
-    SET_MAX_W,
-    SET_MAX_VAR,
-    STAT_VAR_AVAIL,
-    SET_EFFECTIVE_V,
-    SET_MAX_CHARGE_RATE_W,
-    SET_MAX_DISCHARGE_RATE_W,
-    STAT_W_AVAIL
-};
-}; // namespace
+    // Specifies context for interpreting percent values
+    enum class DERUnitRefType : uint8_t
+    {
+        NA,
+        SET_MAX_W,
+        SET_MAX_VAR,
+        STAT_VAR_AVAIL,
+        SET_EFFECTIVE_V,
+        SET_MAX_CHARGE_RATE_W,
+        SET_MAX_DISCHARGE_RATE_W,
+        STAT_W_AVAIL
+    };
+};     // namespace sep
 #endif // __DER_UNIT_REF_TYPE_H__

@@ -5,20 +5,20 @@
 
 namespace sep
 {
-// The reactive power Q (in var) is the product of root mean square (RMS) 
-// voltage, RMS current, and sin(theta) where theta is the phase angle of 
-// current relative to voltage.    
-class ReactivePower
-{
+    // The reactive power Q (in var) is the product of root mean square (RMS)
+    // voltage, RMS current, and sin(theta) where theta is the phase angle of
+    // current relative to voltage.
+    class ReactivePower
+    {
     public:
-        ReactivePower (
-            sep::PowerOfTenMultiplierType* multiplier,
-            uint16_t value
-        );
-        ~ReactivePower ();
+        ReactivePower(
+            sep::PowerOfTenMultiplierType multiplier,
+            uint16_t value);
+        ~ReactivePower();
+
     public:
-        sep::PowerOfTenMultiplierType* multiplier_;
+        sep::PowerOfTenMultiplierType multiplier_;
         uint16_t value_;
-};
-}; // namespace
+    };
+};     // namespace sep
 #endif // __REACTIVE_POWER_H__

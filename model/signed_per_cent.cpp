@@ -2,13 +2,13 @@
 
 namespace sep
 {
-SignedPerCent::SignedPerCent(int16_t value) 
-{
-    value_ = value;
-}
+    SignedPerCent::SignedPerCent(int16_t value)
+    {
+        value_ = value;
+    }
 
-SignedPerCent::~SignedPerCent() 
-{
-    // dtor
-}
-} // namespace
+    SignedPerCent::~SignedPerCent()
+    {
+        // do nothing
+    }
+} // namespace sep

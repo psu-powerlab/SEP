@@ -9,31 +9,31 @@
 
 namespace sep
 {
-    // Used to request flow transactions. Client EndDevices submit a request for 
-    // charging or discharging from the server. The server creates an associated 
-    // FlowReservationResponse containing the charging parameters and interval to 
-    // provide a lower aggregated demand at the premises, or within a larger part 
+    // Used to request flow transactions. Client EndDevices submit a request for
+    // charging or discharging from the server. The server creates an associated
+    // FlowReservationResponse containing the charging parameters and interval to
+    // provide a lower aggregated demand at the premises, or within a larger part
     // of the distribution system
     class FlowReservationRequest
     {
-        public:
-            FlowReservationRequest(
-                    sep::TimeType* creation_time,
-                    uint16_t duration_requested,
-                    sep::SignedRealEnergy* energy_requested,
-                    sep::DateTimeInterval* interval_requested,
-                    sep::ActivePower* power_requested,
-                    sep::RequestStatus* request_status
-            );
-            ~FlowReservationRequest();
-        public:
-            sep::TimeType* creation_time_;
-            uint16_t duration_requested_;
-            sep::SignedRealEnergy* energy_requested_;
-            sep::DateTimeInterval* interval_requested_;
-            sep::ActivePower* power_requested_;
-            sep::RequestStatus* request_status_;
-    };    
+    public:
+        FlowReservationRequest(
+            sep::TimeType creation_time,
+            uint16_t duration_requested,
+            sep::SignedRealEnergy energy_requested,
+            sep::DateTimeInterval interval_requested,
+            sep::ActivePower power_requested,
+            sep::RequestStatus request_status);
+        ~FlowReservationRequest();
+
+    public:
+        sep::TimeType creation_time_;
+        uint16_t duration_requested_;
+        sep::SignedRealEnergy energy_requested_;
+        sep::DateTimeInterval interval_requested_;
+        sep::ActivePower power_requested_;
+        sep::RequestStatus request_status_;
+    };
 } // namespace sep
 
 #endif // __FLOW_RESERVATION_REQUEST_H__

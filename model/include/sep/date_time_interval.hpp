@@ -9,12 +9,13 @@ namespace sep
     class DateTimeInterval
     {
     public:
-        DateTimeInterval(uint32_t duration, sep::TimeType* start);
+        DateTimeInterval(uint32_t duration, sep::TimeType start);
         ~DateTimeInterval();
+
     public:
         uint32_t duration_;
-        sep::TimeType* start_;
-    };    
+        sep::TimeType start_;
+    };
 } // namespace sep
 
 #endif // __DATE_TIME_INTERVAL_H__
