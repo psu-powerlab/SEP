@@ -10,6 +10,6 @@ namespace sep
 
     SignedRealEnergy::~SignedRealEnergy()
     {
-        delete multiplier_;
+        // do nothing
     }
 } // namespace sep
