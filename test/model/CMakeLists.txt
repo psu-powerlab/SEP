@@ -19,7 +19,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED True)
 include(FetchContent)
 
 FetchContent_Declare(
-    SEP COMPONENT Model
+    SEP
     GIT_REPOSITORY https://github.com/psu-powerlab/SEP.git
     GIT_TAG        main
 )
@@ -30,7 +30,7 @@ add_executable (tests
     main.cpp
 )
 
-target_link_libraries(tests SEP::Model)
+target_link_libraries(tests SEP::Model SEP::XML)
 target_include_directories(
     tests PUBLIC 
     ${SEP_INCLUDE_DIRS}

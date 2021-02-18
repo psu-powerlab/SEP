@@ -16,7 +16,7 @@ set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
 add_subdirectory(model)
-# add_subdirectory(xml)
+add_subdirectory(xml)
 
 # include CMakePackageConfigHelpers macro
 include(CMakePackageConfigHelpers)
