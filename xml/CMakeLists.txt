@@ -1,4 +1,4 @@
-find_package(Boost)
+find_package(Boost REQUIRED)
 
 set(COMPONENT_NAME XML)
 add_library(${COMPONENT_NAME} STATIC

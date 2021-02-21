@@ -1,7 +1,7 @@
-#include "include/sep/active_power_xml.hpp"
 #include <iostream>
+#include "include/xml/active_power_xml.hpp"
 
-namespace sep
+namespace xml
 {
     ActivePowerXML::ActivePowerXML(const sep::ActivePower &active_power){
         std::cout << "XML Adapter: Active Power" << std::endl;
@@ -11,4 +11,9 @@ namespace sep
     {
         // do nothing
     }
-} // namespace sep
+
+    std::string& ActivePowerAdapter::serialize() 
+    {
+        return "";
+    }
+} // namespace xml

@@ -23,7 +23,7 @@ find_package(Boost REQUIRED filesystem)
 FetchContent_Declare(
     SEP
     GIT_REPOSITORY https://github.com/psu-powerlab/SEP.git
-    GIT_TAG        main
+    GIT_TAG        XMLAdapter
 )
 
 FetchContent_Declare(
