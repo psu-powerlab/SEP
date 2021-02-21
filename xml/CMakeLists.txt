@@ -1,5 +1,4 @@
 find_package(Boost REQUIRED)
-find_package(SEP REQUIRED)
 
 set(COMPONENT_NAME XML)
 add_library(${COMPONENT_NAME} STATIC
@@ -9,7 +8,7 @@ add_library(${COMPONENT_NAME} STATIC
 # Create ALIAS targets.
 add_library( ${PROJECT_NAME}::${COMPONENT_NAME} ALIAS ${COMPONENT_NAME} )
 
-target_link_libraries(${COMPONENT_NAME} SEP::Model Boost::boost)
+target_link_libraries(${COMPONENT_NAME} Model Boost::boost)
 
 target_include_directories(
     ${COMPONENT_NAME} PUBLIC
