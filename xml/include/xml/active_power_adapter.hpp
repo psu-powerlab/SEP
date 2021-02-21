@@ -1,7 +1,8 @@
-#ifndef __ACTIVE_POWER_XML_H__
-#define __ACTIVE_POWER_XML_H__
-#include "include/xml/adapter_interface.hpp"
+#ifndef __ACTIVE_POWER_ADAPTER_H__
+#define __ACTIVE_POWER_ADAPTER_H__
+
 #include "sep/active_power.hpp"
+#include "adapter_interface.hpp"
 
 namespace xml
 {
@@ -14,4 +15,4 @@ namespace xml
     };
 } // namespace xml
 
-#endif // __ACTIVE_POWER_XML_H__
+#endif // __ACTIVE_POWER_ADAPTER_H__
