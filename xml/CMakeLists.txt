@@ -1,5 +1,5 @@
 find_package(Boost REQUIRED)
-add_subdirectory( ./../model )
+find_package(SEP REQUIRED)
 
 set(COMPONENT_NAME XML)
 add_library(${COMPONENT_NAME} STATIC
