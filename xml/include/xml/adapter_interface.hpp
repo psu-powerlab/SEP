@@ -8,7 +8,7 @@ namespace xml
     {
     public:
         virtual ~AdapterInterface ();
-        virtual std::string& serialize() = 0; // pure virtual
+        virtual std::string serialize() = 0; // pure virtual
 
     private:
 

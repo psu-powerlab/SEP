@@ -13,7 +13,7 @@ namespace xml
         // do nothing
     }
 
-    std::string &ActivePowerAdapter::serialize()
+    std::string ActivePowerAdapter::serialize()
     {
         std::string value = "";
         return value;

@@ -11,7 +11,7 @@ namespace xml
     public:
         ActivePowerAdapter(const sep::ActivePower& active_power);
         ~ActivePowerAdapter();
-        std::string& serialize ();
+        std::string serialize ();
     };
 } // namespace xml
 
