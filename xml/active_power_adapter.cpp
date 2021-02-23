@@ -12,8 +12,9 @@ namespace xml
     
     ActivePowerAdapter::ActivePowerAdapter(const std::string& active_power_str) 
     {
-        std::istringstream iss(active_power_str);
-        boost::property_tree::xml_parser::read_xml(iss, tree_);
+        std::stringstream ss;
+        ss << active_power_str;
+        boost::property_tree::xml_parser::read_xml(ss, tree_);
     }
 
     ActivePowerAdapter::~ActivePowerAdapter()
@@ -23,8 +24,8 @@ namespace xml
 
     std::string ActivePowerAdapter::serialize()
     {
-        std::ostringstream oss;
-        boost::property_tree::xml_parser::write_xml(oss, tree_);
+        std::stringstream ss;
+        boost::property_tree::xml_parser::write_xml(ss, tree_);
         return oss.str();
     }
     
