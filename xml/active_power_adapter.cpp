@@ -26,7 +26,7 @@ namespace xml
     {
         std::stringstream ss;
         boost::property_tree::xml_parser::write_xml(ss, tree_);
-        return oss.str();
+        return ss.str();
     }
     
     boost::property_tree::ptree ActivePowerAdapter::getTree() 
