@@ -2,17 +2,10 @@
 #define __SUBSCRIBABLE_RESOURCE_H__
 #include <cstdint>
 #include "resource.hpp"
+#include "subscribable_type.hpp"
 
 namespace sep
 {
-    enum class SubscribableType : uint8_t
-    {
-        NO_SUBSCRIPTION,
-        NON_CONDITIONAL_SUBSCRIPTION,
-        CONDITIONAL_SUBSCRIPTION,
-        BOTH_SUBSCRIPTIONS
-    };
-
     // A Resource to which a Subscription can be requested.
     class SubscribableResource
     {

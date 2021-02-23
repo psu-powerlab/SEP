@@ -11,5 +11,27 @@ namespace sep
         CONDITIONAL,
         BOTH
     };
+
+    bool checkSubscribableType (uint8_t value)
+    {
+        switch (value)
+        {
+            case 0: 
+                return true;
+                break;
+            case 1:
+                return true;
+                break;
+            case 2:
+                return true;
+                break;    
+            case 3:
+                return true;
+                break; 
+            default:
+                return false;
+                break;
+        }
+    };
 };     // namespace sep
 #endif // __SUBSCRIBABLE_TYPE_H__

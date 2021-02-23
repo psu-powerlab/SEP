@@ -38,7 +38,7 @@ add_executable (tests
     main.cpp
 )
 
-target_link_libraries(tests gtest gtest_main SEP::Model SEP::XML XercesC::XercesC Boost::filesystem Boost::boost)
+target_link_libraries(tests gtest gtest_main SEP::Model SEP::XML XercesC::XercesC Boost::boost Boost::filesystem)
 target_include_directories(
     tests PUBLIC 
     ${SEP_INCLUDE_DIRS}

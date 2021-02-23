@@ -1,10 +1,4 @@
-#include <iostream>
-#include <cstdint>
-
-// Just verify the models are linking properly
-#include <sep/active_power.hpp>
-#include <sep/power_of_ten_multiplier_type.hpp>
-#include <xml/active_power_adapter.hpp>
+#include "gtest/gtest.h"
 
 template <typename Enumeration>
 auto as_value(Enumeration const value)
@@ -13,13 +7,7 @@ auto as_value(Enumeration const value)
     return static_cast<typename std::underlying_type<Enumeration>::type>(value);
 };
 
-int main(int argc, char const *argv[])
-{
-    std::cout << "***SEP MODEL TESTING***" << std::endl;
-
-    sep::PowerOfTenMultiplierType power_multiplier = sep::PowerOfTenMultiplierType::KILO;
-    sep::ActivePower* active_power = new sep::ActivePower(power_multiplier, 1000);
-    std::cout << "\tActive Power:" << as_value(active_power->multiplier_)*active_power->value_ << std::endl;
-    xml::ActivePowerAdapter active_power_xml(*active_power);
-    return 0;
+int main(int argc, char **argv) {
+  ::testing::InitGoogleTest(&argc, argv);
+  return RUN_ALL_TESTS();
 }

@@ -16,5 +16,36 @@ namespace sep
         SET_MAX_DISCHARGE_RATE_W,
         STAT_W_AVAIL
     };
+
+    bool checkDERUnitRefType (uint8_t value)
+    {
+        switch (value)
+        {
+            case 0: 
+                return true;
+                break;
+            case 1:
+                return true;
+                break;
+            case 3: 
+                return true;
+                break;
+            case 4:
+                return true;
+                break;
+            case 5: 
+                return true;
+                break;
+            case 6:
+                return true;
+                break;
+            case 7: 
+                return true;
+                break;            
+            default:
+                return false;
+                break;
+        }
+    };
 };     // namespace sep
 #endif // __DER_UNIT_REF_TYPE_H__

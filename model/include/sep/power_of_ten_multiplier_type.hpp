@@ -18,5 +18,17 @@ namespace sep
         MEGA = 6,
         GIGA = 9
     };
+
+    bool checkPowerOfTenMultiplier (int8_t value) 
+    {
+        int8_t min = static_cast<int8_t>(PowerOfTenMultiplierType::NANO);
+        int8_t max = static_cast<int8_t>(PowerOfTenMultiplierType::GIGA);
+        if (value < min|| value > max)
+        {
+            return false;
+        }
+
+        return true;
+    };
 };     // namespace sep
 #endif // __POWER_OF_TEN_MULTIPLIER_TYPE_H__

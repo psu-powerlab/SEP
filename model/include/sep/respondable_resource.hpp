@@ -11,6 +11,26 @@ namespace sep
         SPECIFIC_RESPONSE,
         RESPONSE_REQUIRED
     };
+
+    bool checkResponseRequired (uint8_t value)
+    {
+        switch (value)
+        {
+            case 0: 
+                return true;
+                break;
+            case 1:
+                return true;
+                break;
+            case 2:
+                return true;
+                break;            
+            default:
+                return false;
+                break;
+        }
+    };
+
     // A Resource to which a Response can be requested.
     class RespondableResource
     {

@@ -12,7 +12,33 @@ namespace sep
         SCHEDULED,
         ACTIVE,
         CANCELLED,
+        CANCELLED_WITH_RANDOMIZATION,
         SUPERSEDED
+    };
+
+    bool checkCurrentStatus(uint8_t value)
+    {
+        switch (value)
+        {
+            case 0: 
+                return true;
+                break;
+            case 1:
+                return true;
+                break;
+            case 2: 
+                return true;
+                break;
+            case 3:
+                return true;
+                break;
+            case 4:
+                return true;
+                break;              
+            default:
+                return false;
+                break;
+        }
     };
 
     // Current status information relevant to a specific object.

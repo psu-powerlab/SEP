@@ -33,5 +33,87 @@ namespace sep
         OTHER_GENERATION_SYSTEM = 1 << 24,
         OTHER_STORAGE_SYSTEM = 1 << 25
     };
+
+    bool checkDeviceCategoryType (uint32_t value)
+    {
+        switch (value)
+        {
+            case 1 << 0: 
+                return true;
+                break;
+            case 1 << 2:
+                return true;
+                break;
+            case 1 << 3: 
+                return true;
+                break;
+            case 1 << 4:
+                return true;
+                break;
+            case 1 << 5:
+                return true;
+                break;
+            case 1 << 6:
+                return true;
+                break;
+            case 1 << 7:
+                return true;
+                break;
+            case 1 << 8:
+                return true;
+                break;
+            case 1 << 9:
+                return true;
+                break;
+            case 1 << 10:
+                return true;
+                break;
+            case 1 << 11:
+                return true;
+                break;
+            case 1 << 12:
+                return true;
+                break;
+            case 1 << 13:
+                return true;
+                break;
+            case 1 << 14:
+                return true;
+                break;
+            case 1 << 15:
+                return true;
+                break;
+            case 1 << 16:
+                return true;
+                break;
+            case 1 << 17:
+                return true;
+                break;
+            case 1 << 18:
+                return true;
+                break;
+            case 1 << 19:
+                return true;
+                break;
+            case 1 << 20:
+                return true;
+                break;
+            case 1 << 21:
+                return true;
+                break;
+            case 1 << 22:
+                return true;
+                break;
+            case 1 << 23:
+                return true;
+                break;
+            case 1 << 25:
+                return true;
+                break;                
+            default:
+                return false;
+                break;
+        }
+    };
 };     // namespace sep
 #endif // __DEVICE_CATEGORY_TYPE_H__

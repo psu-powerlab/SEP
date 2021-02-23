@@ -22,6 +22,55 @@ namespace sep
         UNITLESS
     };
 
+    bool checkUnitType (uint8_t value)
+    {
+        switch (value)
+        {
+            case 0: 
+                return true;
+                break;
+            case 1:
+                return true;
+                break;
+            case 2:
+                return true;
+                break;    
+            case 3:
+                return true;
+                break;
+            case 4: 
+                return true;
+                break;
+            case 5:
+                return true;
+                break;
+            case 6:
+                return true;
+                break;    
+            case 7:
+                return true;
+                break;
+            case 8: 
+                return true;
+                break;
+            case 9:
+                return true;
+                break;
+            case 10:
+                return true;
+                break;    
+            case 11:
+                return true;
+                break;
+            case 12: 
+                return true;
+                break;
+            default:
+                return false;
+                break;
+        }
+    };
+
     // The TargetReduction object is used by a Demand Response service provider
     // to provide a RECOMMENDED threshold that a device/premises should maintain
     // its consumption below.
