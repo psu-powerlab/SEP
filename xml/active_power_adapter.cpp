@@ -12,8 +12,7 @@ namespace xml
     
     ActivePowerAdapter::ActivePowerAdapter(const std::string& active_power_str) 
     {
-        std::istringstream iss;
-        iss << active_power_str;
+        std::istringstream iss(active_power_str);
         boost::property_tree::xml_parser::read_xml(iss, tree_);
     }
 

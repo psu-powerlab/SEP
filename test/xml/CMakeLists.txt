@@ -36,6 +36,7 @@ FetchContent_MakeAvailable(SEP googletest)
 
 add_executable (tests
     main.cpp
+    active_power_test.cpp
 )
 
 target_link_libraries(tests gtest gtest_main SEP::Model SEP::XML XercesC::XercesC Boost::boost Boost::filesystem)
