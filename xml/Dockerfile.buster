@@ -2,7 +2,7 @@
 FROM debian:buster AS builder
 
 RUN apt-get update -y \
-  && apt-get install -y build-essential git cmake wget pkg-config libssl-dev\
+  && apt-get install -y build-essential git cmake wget pkg-config libboost-all-dev libssl-dev\
   && mkdir ~/temp
 RUN cd ~/temp && wget https://github.com/Kitware/CMake/releases/download/v3.18.4/cmake-3.18.4.tar.gz \
   && tar -xf cmake-3.18.4.tar.gz \
@@ -10,6 +10,7 @@ RUN cd ~/temp && wget https://github.com/Kitware/CMake/releases/download/v3.18.4
   && rm -rf ~/temp
 
 FROM builder AS main
+
 COPY . /app
 WORKDIR /app
 RUN cmake -S . -B build && cmake --config build && cmake --build build
