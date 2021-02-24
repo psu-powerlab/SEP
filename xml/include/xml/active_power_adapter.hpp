@@ -2,7 +2,7 @@
 #define __ACTIVE_POWER_ADAPTER_H__
 #include <string>
 #include <boost/property_tree/ptree.hpp>
-#include "sep/active_power.hpp"
+#include <sep/active_power.hpp>
 #include "adapter_interface.hpp"
 
 namespace xml

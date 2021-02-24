@@ -1,3 +1,5 @@
+#include <iostream>
+#include <cstdint>
 #include <sstream>
 #include <type_traits>
 #include <boost/property_tree/xml_parser.hpp>
@@ -22,7 +24,18 @@ namespace xml
     {
         std::stringstream ss;
         ss << active_power_str;
-        boost::property_tree::xml_parser::read_xml(ss, tree_);
+        boost::property_tree::ptree pt;
+        boost::property_tree::xml_parser::read_xml(ss, pt);
+
+        int8_t multiplier = pt.get<int8_t>("ActivePower.multiplier", 0);
+        if (!sep::checkPowerOfTenMultiplier(multiplier))
+        {
+            std::cout << "Bad multiplier" << std::endl;
+        }
+        tree_.put("ActivePower.multiplier", multiplier);
+
+        int16_t value = pt.get<int16_t>("ActivePower.value", 0);
+        tree_.put("ActivePower.value", value);
     }
 
     ActivePowerAdapter::~ActivePowerAdapter()
