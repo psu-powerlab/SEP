@@ -17,8 +17,9 @@ set(CMAKE_CXX_STANDARD_REQUIRED True)
 
 # add other packages for cmake
 include(FetchContent)
-find_package (XercesC REQUIRED)
-find_package(Boost REQUIRED filesystem)
+include(FindXercesC)
+find_package(XercesC REQUIRED)
+find_package(Boost REQUIRED)
 
 FetchContent_Declare(
     SEP
@@ -39,7 +40,7 @@ add_executable (tests
     active_power_test.cpp
 )
 
-target_link_libraries(tests gtest gtest_main SEP::Model SEP::XML XercesC::XercesC Boost::boost Boost::filesystem)
+target_link_libraries(tests gtest SEP::Model SEP::XML ${XercesC_LIBRARY} Boost::boost pthread)
 target_include_directories(
     tests PUBLIC 
     ${SEP_INCLUDE_DIRS}

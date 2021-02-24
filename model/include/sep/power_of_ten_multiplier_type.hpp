@@ -21,9 +21,9 @@ namespace sep
 
     bool checkPowerOfTenMultiplier (int8_t value) 
     {
-        int8_t min = static_cast<int8_t>(PowerOfTenMultiplierType::NANO);
-        int8_t max = static_cast<int8_t>(PowerOfTenMultiplierType::GIGA);
-        if (value < min|| value > max)
+        int8_t min = -9;
+        int8_t max = 9;
+        if (value < min || value > max)
         {
             return false;
         }
