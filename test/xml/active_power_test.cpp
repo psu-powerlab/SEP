@@ -39,13 +39,21 @@ protected:
 TEST_F(TestActivePowerXML, IsSampleValid) 
 {    
     const char *xsd_path = "./sep.xsd";
-    const char *xml_path = "./sep_examples/ActivePower.xml";
      
-    bool valid = ValidateSchema(xsd_path, xml_path);
+    bool valid = ValidateSchema(xsd_path, xml_str_);
     EXPECT_EQ(valid, true);       
 }
 
 TEST_F(TestActivePowerXML, IsStr2AdapterValid) 
 {    
-    EXPECT_EQ(xml_str_, active_power_xml_->serialize());    
+    const char *xsd_path = "./sep.xsd";
+    bool valid = ValidateSchema(xsd_path, active_power_xml_->serialize());
+    EXPECT_EQ(valid, true);    
+}
+
+TEST_F(TestActivePowerXML, IsStr2AdapterValid) 
+{    
+    const char *xsd_path = "./sep.xsd";
+    bool valid = ValidateSchema(xsd_path, active_power_xml_->serialize());
+    EXPECT_EQ(valid, true);    
 }
