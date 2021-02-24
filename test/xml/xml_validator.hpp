@@ -6,34 +6,12 @@
 #include <xercesc/util/XMLString.hpp>
 #include <xercesc/parsers/XercesDOMParser.hpp>
 #include <xercesc/framework/LocalFileInputSource.hpp>
+#include <xercesc/framework/MemBufInputSource.hpp>
 #include <xercesc/sax/ErrorHandler.hpp>
 #include <xercesc/sax/SAXParseException.hpp>
 #include <xercesc/validators/common/Grammar.hpp>
 
 XERCES_CPP_NAMESPACE_USE
-
-// Helper class to convert UTC-8 to UTC-16
-class WStr
-{
-public:
-    WStr(const char *str)
-    {
-        wStr = XMLString::transcode(str);
-    }
-
-    ~WStr()
-    {
-        XMLString::release(&wStr);
-    }
-
-    operator const XMLCh *() const
-    {
-        return wStr;
-    }
-
-private:
-    XMLCh *wStr;
-};
 
 // Display errors to terminal when validating
 class ParserErrorHandler : public ErrorHandler
@@ -68,10 +46,10 @@ public:
     }
 };
 
-bool ValidateSchema(const char *schemaFilePath, const char *xmlFilePath)
+inline bool ValidateSchema(const char *xsd_path, const std::string &xml_file)
 {
     XercesDOMParser domParser;
-    if (domParser.loadGrammar(schemaFilePath, Grammar::SchemaGrammarType) == NULL)
+    if (domParser.loadGrammar(xsd_path, Grammar::SchemaGrammarType) == NULL)
     {
         fprintf(stderr, "couldn't load schema\n");
         return false;
@@ -85,7 +63,11 @@ bool ValidateSchema(const char *schemaFilePath, const char *xmlFilePath)
     domParser.setDoSchema(true);
     domParser.setValidationConstraintFatal(true);
 
-    domParser.parse(xmlFilePath);
+    xercesc::MemBufInputSource* xml_buff = new MemBufInputSource(
+        (const XMLByte*)xml_file.c_str(), strlen(xml_file.c_str()), "test", false
+    );
+
+    domParser.parse(*xml_buff);
     if (domParser.getErrorCount() == 0)
     {
         printf("XML file validated against the schema successfully\n");

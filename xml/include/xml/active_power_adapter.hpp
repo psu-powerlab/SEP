@@ -1,22 +1,19 @@
 #ifndef __ACTIVE_POWER_ADAPTER_H__
 #define __ACTIVE_POWER_ADAPTER_H__
 #include <string>
+#include <memory>
 #include <boost/property_tree/ptree.hpp>
 #include <sep/active_power.hpp>
-#include "adapter_interface.hpp"
+#include "adapter.hpp"
 
 namespace xml
 {
-    class ActivePowerAdapter : public AdapterInterface
+    class ActivePowerAdapter : public Adapter
     {
     public:
-        ActivePowerAdapter(const sep::ActivePower& active_power);
-        ActivePowerAdapter(const std::string& active_power_str);
+        ActivePowerAdapter(std::shared_ptr<sep::ActivePower> active_power);
         ~ActivePowerAdapter();
-        std::string serialize ();
-        boost::property_tree::ptree getTree ();
-    private:
-        boost::property_tree::ptree tree_;
+        ParseError parse (const std::string &xml);
     };
 } // namespace xml
 
