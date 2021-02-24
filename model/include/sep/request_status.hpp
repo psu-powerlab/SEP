@@ -13,7 +13,7 @@ namespace sep
         CANCELLED
     };
 
-    bool checkStatus (uint8_t value)
+    inline bool checkStatus (uint8_t value)
     {
         switch (value)
         {

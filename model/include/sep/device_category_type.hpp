@@ -34,7 +34,7 @@ namespace sep
         OTHER_STORAGE_SYSTEM = 1 << 25
     };
 
-    bool checkDeviceCategoryType (uint32_t value)
+    inline bool checkDeviceCategoryType (uint32_t value)
     {
         switch (value)
         {

@@ -12,7 +12,7 @@ namespace sep
         RESPONSE_REQUIRED
     };
 
-    bool checkResponseRequired (uint8_t value)
+    inline bool checkResponseRequired (uint8_t value)
     {
         switch (value)
         {

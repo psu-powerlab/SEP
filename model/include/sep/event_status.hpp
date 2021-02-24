@@ -16,7 +16,7 @@ namespace sep
         SUPERSEDED
     };
 
-    bool checkCurrentStatus(uint8_t value)
+    inline bool checkCurrentStatus(uint8_t value)
     {
         switch (value)
         {

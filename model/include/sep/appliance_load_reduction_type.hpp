@@ -14,7 +14,7 @@ namespace sep
         TEMPORARY_APPLIANCE_LOAD_REDUCTION
     };
 
-    bool checkApplianceLoadReductionType (uint8_t value)
+    inline bool checkApplianceLoadReductionType (uint8_t value)
     {
         switch (value)
         {

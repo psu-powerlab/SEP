@@ -17,7 +17,7 @@ namespace sep
         STAT_W_AVAIL
     };
 
-    bool checkDERUnitRefType (uint8_t value)
+    inline bool checkDERUnitRefType (uint8_t value)
     {
         switch (value)
         {

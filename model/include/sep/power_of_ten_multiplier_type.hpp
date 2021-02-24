@@ -19,7 +19,7 @@ namespace sep
         GIGA = 9
     };
 
-    bool checkPowerOfTenMultiplier(int8_t value)
+    inline bool checkPowerOfTenMultiplier(int8_t value)
     {
         int8_t min = -9;
         int8_t max = 9;

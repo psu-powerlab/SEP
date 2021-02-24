@@ -22,7 +22,7 @@ namespace sep
         UNITLESS
     };
 
-    bool checkUnitType (uint8_t value)
+    inline bool checkUnitType (uint8_t value)
     {
         switch (value)
         {

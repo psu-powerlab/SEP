@@ -12,7 +12,7 @@ namespace sep
         BOTH
     };
 
-    bool checkSubscribableType (uint8_t value)
+    inline bool checkSubscribableType (uint8_t value)
     {
         switch (value)
         {
