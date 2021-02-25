@@ -3,13 +3,14 @@
 #include <sstream>
 #include <type_traits>
 #include <boost/property_tree/xml_parser.hpp>
+#include <sep/utilities.hpp>
 #include "include/xml/active_power_adapter.hpp"
 
 namespace xml
 {
     ActivePowerAdapter::ActivePowerAdapter(std::shared_ptr<sep::ActivePower> active_power)
     {
-        tree_.put("ActivePower.multiplier", as_value(active_power.multiplier_));
+        tree_.put("ActivePower.multiplier", util::enum_value(active_power.multiplier_));
         tree_.put("ActivePower.value", active_power.value_);
     }
 
