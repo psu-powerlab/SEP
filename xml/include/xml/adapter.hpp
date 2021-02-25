@@ -24,9 +24,9 @@ namespace xml
             return ss.str();
         };
         boost::property_tree::ptree getTree() {
-            return tree_
+            return tree_;
         };
-    private:
+    protected:
         boost::property_tree::ptree tree_;
     };
 } // namespace xml
