@@ -29,7 +29,7 @@ namespace xml
     {
         boost::property_tree::ptree pt = treeify(xml);
         ParseError err = translate(pt);
-        std::cout << "ActivePowerAdapter Debug: " << err << std::endl;       
+        std::cout << "ActivePowerAdapter Debug: " << util::enum_value(err) << std::endl;       
     }
     
     ParseError ActivePowerAdapter::translate(boost::property_tree::ptree &pt) 
