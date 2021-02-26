@@ -43,6 +43,7 @@ namespace xml
 
         sep::PowerOfTenMultiplierType power_of_ten = sep::PowerOfTenMultiplierType(multiplier);
         int16_t value = pt.get<int16_t>("ActivePower.value", 0);
+        std::cout << "ActivePowerAdapter Debug: translate" << std::endl;  
         active_power_ = std::make_shared<sep::ActivePower>(power_of_ten, value);
         return xml::ParseError::NONE;
     }

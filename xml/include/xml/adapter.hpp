@@ -31,6 +31,7 @@ namespace xml
             std::stringstream ss;
             ss << xml;
             boost::property_tree::ptree pt;
+            std::cout << "ActivePowerAdapter Debug: treeify" << std::endl; 
             boost::property_tree::xml_parser::read_xml(ss, pt);
             return pt;
         };
