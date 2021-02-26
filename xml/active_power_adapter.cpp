@@ -34,7 +34,7 @@ namespace xml
             return xml::ParseError::VALUE_BOUNDS;
         }
 
-        active_power_->multiplier_ = multiplier;
+        active_power_->multiplier_ = sep::PowerOfTenMultiplierType(multiplier);
         active_power_->value_ = pt.get<int16_t>("ActivePower.value", 0);
         return xml::ParseError::NONE;
     }
