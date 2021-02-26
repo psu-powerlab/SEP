@@ -6,7 +6,6 @@
 #include <xml/active_power_adapter.hpp>
 #include "xml_validator.hpp"
 
-
 class TestActivePowerXML : public ::testing::Test 
 {
 protected:
@@ -48,6 +47,7 @@ TEST_F(TestActivePowerXML, IsSampleValid)
 TEST_F(TestActivePowerXML, IsAdapterParseValid) 
 {    
     active_power_xml_->parse(xml_str_);
+    std::cout << "HERE" << std::endl;
     EXPECT_EQ(active_power_xml_->active_power_->multiplier_, sep::PowerOfTenMultiplierType::HECTO);
     EXPECT_EQ(active_power_xml_->active_power_->value_, -32000);  
 }
