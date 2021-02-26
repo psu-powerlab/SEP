@@ -25,7 +25,7 @@ namespace xml
             boost::property_tree::xml_parser::write_xml(ss, tree);
             return ss.str();
         };
-        boost::property_tree::ptree treeify (const std::string *xml)
+        boost::property_tree::ptree treeify (const std::string &xml)
         {
             std::stringstream ss;
             ss << xml;
