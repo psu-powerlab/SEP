@@ -8,6 +8,12 @@
 
 namespace xml
 {
+    ActivePowerAdapter::ActivePowerAdapter()
+        : active_power_(nullptr)
+    {
+        // do nothing
+    }
+
     ActivePowerAdapter::ActivePowerAdapter(std::shared_ptr<sep::ActivePower> active_power)
         : active_power_(active_power)
     {
@@ -34,8 +40,9 @@ namespace xml
             return xml::ParseError::VALUE_BOUNDS;
         }
 
-        active_power_->multiplier_ = sep::PowerOfTenMultiplierType(multiplier);
-        active_power_->value_ = pt.get<int16_t>("ActivePower.value", 0);
+        sep::PowerOfTenMultiplierType power_of_ten(multiplier);
+        int16_t value = pt.get<int16_t>("ActivePower.value", 0);
+        active_power_ = std::make_shared<sep::ActivePower>(power_of_ten, value);
         return xml::ParseError::NONE;
     }
 } // namespace xml

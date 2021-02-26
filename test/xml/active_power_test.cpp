@@ -26,10 +26,6 @@ protected:
         {
             std::cout << "couldn't open xml file" << std::endl;
         };
-
-        // initialize the test variables
-        std::shared_ptr<sep::ActivePower> active_power;
-        active_power_xml_ = new xml::ActivePowerAdapter(active_power);
     }
 
     void TearDown() override
@@ -40,7 +36,7 @@ protected:
 protected:
     const char *xsd_path_ = "./sep.xsd";
     std::string xml_str_;
-    std::shared_ptr<sep::ActivePower> active_power_xml_;
+    std::shared_ptr<xml::ActivePowerAdapter> active_power_xml_;
 };
 
 TEST_F(TestActivePowerXML, IsSampleValid) 
@@ -58,7 +54,7 @@ TEST_F(TestActivePowerXML, IsAdapterParseValid)
 
 TEST_F(TestActivePowerXML, IsAdapterSerializeValid)
 {    
-    active_power_xml_->parse(xml_str_);  // this should be saved in the test harness already
-    std::string adapter_xml = active_power_xml_->serialize();
+    boost::property_tree::ptree pt = active_power_xml_->treeify(xml_str_);
+    std::string adapter_xml = active_power_xml_->serialize(pt);
     EXPECT_EQ(adapter_xml, xml_str_);    
 }

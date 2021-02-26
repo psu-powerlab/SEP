@@ -11,6 +11,7 @@ namespace xml
     class ActivePowerAdapter : public Adapter
     {
     public:
+        ActivePowerAdapter();
         ActivePowerAdapter(std::shared_ptr<sep::ActivePower> active_power);
         ~ActivePowerAdapter();
         void parse(const std::string &xml);
