@@ -22,7 +22,7 @@ namespace xml
         std::string serialize(boost::property_tree::ptree &tree)
         {
             std::stringstream ss;
-            boost::property_tree::xml_parser::write_xml(ss, tree_);
+            boost::property_tree::xml_parser::write_xml(ss, tree);
             return ss.str();
         };
         boost::property_tree::ptree treeify (const std::string *xml)
