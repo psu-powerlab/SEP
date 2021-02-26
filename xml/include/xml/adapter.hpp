@@ -17,17 +17,22 @@ namespace xml
     class Adapter
     {
     public:
-        virtual ParseError parse(const std::string& xml) = 0;                    // pure virtual
-        std::string serialize(){
+        virtual void parse(const std::string &xml) = 0; // pure virtual
+        virtual ParseError translate(boost::property_tree::ptree &tree) = 0;    // pure virtual
+        std::string serialize(boost::property_tree::ptree &tree)
+        {
             std::stringstream ss;
             boost::property_tree::xml_parser::write_xml(ss, tree_);
             return ss.str();
         };
-        boost::property_tree::ptree getTree() {
-            return tree_;
+        boost::property_tree::ptree treeify (const std::string *xml)
+        {
+            std::stringstream ss;
+            ss << xml;
+            boost::property_tree::ptree pt;
+            boost::property_tree::xml_parser::read_xml(ss, pt);
+            return pt;
         };
-    protected:
-        boost::property_tree::ptree tree_;
     };
 } // namespace xml
 
