@@ -14,7 +14,7 @@ namespace xml
         ActivePowerAdapter(std::shared_ptr<sep::ActivePower> active_power);
         ~ActivePowerAdapter();
         void parse(const std::string &xml);
-        ParseError translate(boost::property_tree::ptree &tree);
+        ParseError translate(boost::property_tree::ptree &pt);
 
     public:
         std::shared_ptr<sep::ActivePower> active_power_;

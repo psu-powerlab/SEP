@@ -25,7 +25,7 @@ namespace xml
         ParseError err = translate(pt);        
     }
     
-    ParseError ActivePowerAdapter::translate(boost::property_tree::ptree &tree) 
+    ParseError ActivePowerAdapter::translate(boost::property_tree::ptree &pt) 
     {
         // if missing default = 0
         int8_t multiplier = pt.get<int8_t>("ActivePower.multiplier", 0);
