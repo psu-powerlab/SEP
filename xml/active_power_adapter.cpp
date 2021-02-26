@@ -40,7 +40,7 @@ namespace xml
             return xml::ParseError::VALUE_BOUNDS;
         }
 
-        sep::PowerOfTenMultiplierType power_of_ten(multiplier);
+        sep::PowerOfTenMultiplierType power_of_ten = sep::PowerOfTenMultiplierType(multiplier);
         int16_t value = pt.get<int16_t>("ActivePower.value", 0);
         active_power_ = std::make_shared<sep::ActivePower>(power_of_ten, value);
         return xml::ParseError::NONE;
