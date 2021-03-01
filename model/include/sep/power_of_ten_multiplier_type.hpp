@@ -6,29 +6,7 @@ namespace sep
 {
     // This is not a complete list. Any integer between -9 and 9 SHALL be
     // supported, indicating the power of ten multiplier for the units.
-    enum class PowerOfTenMultiplierType : int8_t
-    {
-        NANO = -9,
-        MICRO = -6,
-        MILLI = -3,
-        NONE = 0,
-        DECA = 1,
-        HECTO = 2,
-        KILO = 3,
-        MEGA = 6,
-        GIGA = 9
-    };
-
-    inline bool checkPowerOfTenMultiplier(int8_t value)
-    {
-        int8_t min = -9;
-        int8_t max = 9;
-        if (value < min || value > max)
-        {
-            return false;
-        }
-
-        return true;
-    };
+    using PowerOfTenMultiplierType = int8_t;
+    
 };     // namespace sep
 #endif // __POWER_OF_TEN_MULTIPLIER_TYPE_H__

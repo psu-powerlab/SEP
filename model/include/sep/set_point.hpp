@@ -17,17 +17,10 @@ namespace sep
     // used by the end device. If a temperature is sent that exceeds the
     // temperature limit boundaries that are programmed into the device, the
     // device SHALL respond by setting the temperature at the limit.
-    class SetPoint
+    struct SetPoint
     {
-    public:
-        SetPoint(
-            int16_t cooling_set_point = 0,
-            int16_t heating_set_point = 0);
-        ~SetPoint();
-
-    public:
-        int16_t cooling_set_point_;
-        int16_t heating_set_point_;
+        int16_t cooling_set_point;
+        int16_t heating_set_point;
     };
 }; // namespace sep
 

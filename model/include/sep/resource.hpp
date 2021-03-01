@@ -6,14 +6,9 @@ namespace sep
 {
     //  resource is an addressable unit of information, either
     // a collection (List) or instance of an object.
-    class Resource
+    struct Resource
     {
-    public:
-        Resource(std::string href);
-        ~Resource();
-
-    public:
-        std::string href_ = ""; // optional
+        std::string href; // optional
     };
 }; // namespace sep
 

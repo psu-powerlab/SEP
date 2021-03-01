@@ -22,21 +22,11 @@ namespace sep
     // controlling devices at its disposal, and at the conclusion of the event,
     // once again use the Metering function set to determine if the desired load
     // reduction was achieved
-    class Offset
+    struct Offset
     {
-    public:
-        Offset(
-            sep::PerCent *load_adjustment_percentage_offset,
-            uint8_t cooling_offset = 0,
-            uint8_t heating_offset = 0
-
-        );
-        ~Offset();
-
-    public:
-        uint8_t cooling_offset_;
-        uint8_t heating_offset_;
-        sep::PerCent *load_adjustment_percentage_offset_;
+        uint8_t cooling_offset;
+        uint8_t heating_offset;
+        sep::PerCent load_adjustment_percentage_offset;
     };
 }; // namespace sep
 

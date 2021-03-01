@@ -6,15 +6,10 @@
 namespace sep
 {
     // Real electrical energy, signed
-    class SignedRealEnergy
+    struct SignedRealEnergy
     {
-    public:
-        SignedRealEnergy(sep::PowerOfTenMultiplierType multiplier, int64_t value);
-        ~SignedRealEnergy();
-
-    public:
-        sep::PowerOfTenMultiplierType multiplier_;
-        int64_t value_ : 48; // Watt-hours
+        sep::PowerOfTenMultiplierType multiplier;
+        int64_t value : 48; // Watt-hours
     };
 };     // namespace sep
 #endif // __SIGNED_REAL_ENERGY_H__

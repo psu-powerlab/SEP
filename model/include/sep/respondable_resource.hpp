@@ -2,49 +2,23 @@
 #define __RESPONDABLE_RESOURCE_H__
 #include <cstdint>
 #include "resource.hpp"
+#include "link.hpp"
 
 namespace sep
 {
     enum class ResponseRequired : uint8_t
     {
-        RECIEVED,
-        SPECIFIC_RESPONSE,
-        RESPONSE_REQUIRED
-    };
-
-    inline bool checkResponseRequired (uint8_t value)
-    {
-        switch (value)
-        {
-            case 0: 
-                return true;
-                break;
-            case 1:
-                return true;
-                break;
-            case 2:
-                return true;
-                break;            
-            default:
-                return false;
-                break;
-        }
+        kRecieved = 1 << 0,
+        kSpecificResponse = 1 << 1,
+        kResponseRequired = 1 << 2
     };
 
     // A Resource to which a Response can be requested.
-    class RespondableResource
+    struct RespondableResource
     {
-    public:
-        RespondableResource(
-            sep::Resource *resource,
-            std::string reply_to = "",
-            sep::ResponseRequired response_required = sep::ResponseRequired::RECIEVED);
-        ~RespondableResource();
-
-    public:
-        sep::Resource *resource_;
-        std::string reply_to_;
-        sep::ResponseRequired response_required_;
+        sep::Resource resource;
+        sep::Link reply_to;
+        sep::ResponseRequired response_required;
     };
 };     // namespace sep
 #endif // __RESPONDABLE_RESOURCE_H__

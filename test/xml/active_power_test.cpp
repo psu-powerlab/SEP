@@ -3,6 +3,7 @@
 #include <string>
 #include <memory>
 #include <gtest/gtest.h>
+#include <sep/active_power.hpp>
 #include <xml/active_power_adapter.hpp>
 #include "xml_validator.hpp"
 
@@ -19,7 +20,7 @@ protected:
         {
             std::ostringstream oss;
             oss << ifs.rdbuf();
-            xml_str_ = oss.str();        
+            xml_str = oss.str();        
         }
         else
         {
@@ -33,28 +34,29 @@ protected:
     }
 
 protected:
-    const char *xsd_path_ = "./sep.xsd";
-    std::string xml_str_;
-    std::shared_ptr<xml::ActivePowerAdapter> active_power_xml_;
+    const char *xsd_path = "./sep.xsd";
+    std::string xml_str;
+    std::shared_ptr<sep::ActivePower> active_power;
+    std::shared_ptr<xml::ActivePowerAdapter> active_power_xml;
 };
 
 TEST_F(TestActivePowerXML, IsSampleValid) 
 {    
-    bool valid = ValidateSchema(xsd_path_, xml_str_);
+    bool valid = ValidateSchema(xsd_path, xml_str);
     EXPECT_EQ(valid, true);       
 }
 
 TEST_F(TestActivePowerXML, IsAdapterParseValid) 
 {    
-    active_power_xml_->parse(xml_str_);
-    std::cout << "HERE" << std::endl;
-    EXPECT_EQ(active_power_xml_->active_power_->multiplier_, sep::PowerOfTenMultiplierType::HECTO);
-    EXPECT_EQ(active_power_xml_->active_power_->value_, -32000);  
+    active_power_xml->parse(xml_str);
+    EXPECT_EQ(active_power_xml->active_power->multiplier, 1);
+    EXPECT_EQ(active_power_xml->active_power->value, -32000);  
 }
 
 TEST_F(TestActivePowerXML, IsAdapterSerializeValid)
 {    
-    boost::property_tree::ptree pt = active_power_xml_->treeify(xml_str_);
-    std::string adapter_xml = active_power_xml_->serialize(pt);
-    EXPECT_EQ(adapter_xml, xml_str_);    
+    boost::property_tree::ptree pt = active_power_xml->treeify(xml_str);
+    std::string adapter_xml = active_power_xml->serialize(pt);
+    bool valid = ValidateSchema(xsd_path, adapter_xml);
+    EXPECT_EQ(valid, true);    
 }

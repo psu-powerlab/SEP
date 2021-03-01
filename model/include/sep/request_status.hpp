@@ -9,38 +9,15 @@ namespace sep
     // Field representing the request status type.
     enum class Status : uint8_t
     {
-        REQUESTED,
-        CANCELLED
-    };
-
-    inline bool checkStatus (uint8_t value)
-    {
-        switch (value)
-        {
-            case 0: 
-                return true;
-                break;
-            case 1:
-                return true;
-                break;
-            default:
-                return false;
-                break;
-        }
+        kRequested,
+        kCancelled
     };
 
     // The RequestStatus object is used to indicate the current status of a Flow Reservation Request.
-    class RequestStatus
+    struct RequestStatus
     {
-    public:
-
-    public:
-        RequestStatus(sep::TimeType datetime, Status status);
-        ~RequestStatus();
-
-    public:
-        sep::TimeType datetime_;
-        Status status_;
+        sep::TimeType datetime;
+        Status status;
     };
 } // namespace sep
 

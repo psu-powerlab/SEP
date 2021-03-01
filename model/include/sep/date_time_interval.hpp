@@ -6,15 +6,10 @@
 namespace sep
 {
     // Interval of date and time
-    class DateTimeInterval
+    struct DateTimeInterval
     {
-    public:
-        DateTimeInterval(uint32_t duration, sep::TimeType start);
-        ~DateTimeInterval();
-
-    public:
-        uint32_t duration_;
-        sep::TimeType start_;
+        uint32_t duration;
+        sep::TimeType start;
     };
 } // namespace sep
 

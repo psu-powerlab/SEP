@@ -47,4 +47,5 @@ namespace xml
         active_power_ = std::make_shared<sep::ActivePower>(power_of_ten, value);
         return xml::ParseError::NONE;
     }
+    
 } // namespace xml

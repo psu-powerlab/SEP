@@ -9,36 +9,11 @@ namespace sep
 {
     enum class CurrentStatus : uint8_t
     {
-        SCHEDULED,
-        ACTIVE,
-        CANCELLED,
-        CANCELLED_WITH_RANDOMIZATION,
-        SUPERSEDED
-    };
-
-    inline bool checkCurrentStatus(uint8_t value)
-    {
-        switch (value)
-        {
-            case 0: 
-                return true;
-                break;
-            case 1:
-                return true;
-                break;
-            case 2: 
-                return true;
-                break;
-            case 3:
-                return true;
-                break;
-            case 4:
-                return true;
-                break;              
-            default:
-                return false;
-                break;
-        }
+        kScheduled,
+        kActive,
+        kCancelled,
+        kCancelledWithRandomization,
+        kSuperseded
     };
 
     // Current status information relevant to a specific object.
@@ -47,23 +22,13 @@ namespace sep
     // the most up to date status of the event.  Devices can also subscribe
     // to a specific resource instance to get updates when any of its
     // attributes change, including the Status object.
-    class EventStatus
+    struct EventStatus
     {
-    public:
-        EventStatus(
-            sep::CurrentStatus current_status,
-            sep::TimeType date_time,
-            bool potentially_superseded,
-            sep::TimeType potentially_superseded_time = 0,
-            std::string reason = "");
-        ~EventStatus();
-
-    public:
-        sep::CurrentStatus current_status_;
-        sep::TimeType date_time_;
-        bool potentially_superseded_;
-        sep::TimeType potentially_superseded_time_;
-        std::string reason_;
+        sep::CurrentStatus current_status;
+        sep::TimeType date_time;
+        bool potentially_superseded;
+        sep::TimeType potentially_superseded_time;
+        std::string reason;
     };
 };     // namespace sep
 #endif // __EVENT_STATUS_H__

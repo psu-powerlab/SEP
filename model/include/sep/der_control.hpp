@@ -7,19 +7,11 @@
 namespace sep
 {
     // Distributed Energy Resource (DER) time/event-based control.
-    class DERControl
+    struct DERControl
     {
-    public:
-        DERControl(
-            sep::RandomizableEvent *randomize_event,
-            sep::DERControlBase *der_control_base,
-            sep::DeviceCategoryType device_category);
-        ~DERControl();
-
-    public:
-        sep::RandomizableEvent *randomize_event_;
-        sep::DERControlBase *der_control_base_;
-        sep::DeviceCategoryType device_category_;
+        sep::RandomizableEvent randomize_event;
+        sep::DERControlBase der_control_base;
+        sep::DeviceCategoryType device_category;
     };
 };     // namespace sep
 #endif // __DER_CONTROL_H__

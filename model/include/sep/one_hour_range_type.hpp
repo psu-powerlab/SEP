@@ -6,7 +6,7 @@ namespace sep
 {
     // A signed time offset, typically applied to a Time value, expressed in seconds, with range -3600 to 3600.
 
-    typedef int16_t OneHourRangeType;
+    using OneHourRangeType = int16_t;
 
 } // namespace sep
 

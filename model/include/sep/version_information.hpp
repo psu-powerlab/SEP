@@ -4,19 +4,14 @@
 
 namespace sep
 {
-    class VersionInformation
+    struct VersionInformation
     {
-    public:
-        VersionInformation();
-        ~VersionInformation();
-
-    public:
-        std::string default_namespace_;
-        std::string element_form_default_;
-        std::string schema_location_;
-        std::string target_namespace_;
-        std::string trace_id_;
-        std::string version_;
+        std::string default_namespace;
+        std::string element_form_default;
+        std::string schema_location;
+        std::string target_namespace;
+        std::string trace_id;
+        std::string version;
     };
 }; // namespace sep
 

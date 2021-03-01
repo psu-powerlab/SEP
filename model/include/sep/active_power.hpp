@@ -9,15 +9,10 @@ namespace sep
     // voltage, RMS current, and cos(theta) where theta is the phase angle of
     // current relative to voltage.  It is the primary measure of the rate of
     // flow of energy.
-    class ActivePower
+    struct ActivePower
     {
-    public:
-        ActivePower(sep::PowerOfTenMultiplierType multiplier, int16_t value);
-        ~ActivePower();
-
-    public:
-        sep::PowerOfTenMultiplierType multiplier_;
-        int16_t value_; // watts
+        sep::PowerOfTenMultiplierType multiplier;
+        int16_t value; // watts
     };
 }; // namespace sep
 
