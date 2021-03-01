@@ -11,13 +11,13 @@ namespace xml
     class ActivePowerAdapter : public Adapter
     {
     public:
-        ActivePowerAdapter(std::shared_ptr<sep::ActivePower> model);
+        ActivePowerAdapter(const std::shared_ptr<sep::ActivePower> &model);
         ~ActivePowerAdapter();
         void parse(const std::string &xml);
         void translate(const boost::property_tree::ptree &pt);
 
     public:
-        std::shared_ptr<sep::ActivePower> active_power;
+        std::shared_ptr<sep::ActivePower> active_power_;
     };
 } // namespace xml
 

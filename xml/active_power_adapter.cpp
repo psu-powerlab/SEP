@@ -8,9 +8,9 @@
 
 namespace xml
 {
-    ActivePowerAdapter::ActivePowerAdapter(std::shared_ptr<sep::ActivePower> model)
+    ActivePowerAdapter::ActivePowerAdapter(const std::shared_ptr<sep::ActivePower> &model)
     {
-        active_power = model;
+        active_power_ = model;
     }
 
     ActivePowerAdapter::~ActivePowerAdapter()
@@ -27,8 +27,8 @@ namespace xml
     void ActivePowerAdapter::translate(const boost::property_tree::ptree &pt) 
     {
         // if missing default = 0
-        active_power->multiplier = pt.get<sep::PowerOfTenMultiplierType>("ActivePower.multiplier", 0);
-        active_power->value = pt.get<int16_t>("ActivePower.value", 0);
+        active_power_->multiplier = pt.get<sep::PowerOfTenMultiplierType>("ActivePower.multiplier", 0);
+        active_power_->value = pt.get<int16_t>("ActivePower.value", 0);
     }
     
 } // namespace xml

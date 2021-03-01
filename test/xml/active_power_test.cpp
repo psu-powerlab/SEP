@@ -12,6 +12,8 @@ class TestActivePowerXML : public ::testing::Test
 protected:
     void SetUp() override 
     {        
+        active_power = std::make_shared<sep::ActivePower>();
+        active_power_xml = std::make_shared<xml::ActivePowerAdapter>(active_power);
         XMLPlatformUtils::Initialize();
 
         // read in the sample file
@@ -37,7 +39,7 @@ protected:
     const char *xsd_path = "./sep.xsd";
     std::string xml_str;
     std::shared_ptr<sep::ActivePower> active_power;
-    std::shared_ptr<xml::ActivePowerAdapter> active_power_xml;
+    xml::ActivePowerAdapter active_power_xml;
 };
 
 TEST_F(TestActivePowerXML, IsSampleValid) 
@@ -49,6 +51,7 @@ TEST_F(TestActivePowerXML, IsSampleValid)
 TEST_F(TestActivePowerXML, IsAdapterParseValid) 
 {    
     active_power_xml->parse(xml_str);
+    std::cout << "HERE" << std::endl;
     EXPECT_EQ(active_power_xml->active_power->multiplier, 1);
     EXPECT_EQ(active_power_xml->active_power->value, -32000);  
 }
