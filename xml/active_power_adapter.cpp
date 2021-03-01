@@ -27,8 +27,8 @@ namespace xml
     void ActivePowerAdapter::translate(const boost::property_tree::ptree &pt) 
     {
         // if missing default = 0
-        active_power.multiplier = pt.get<sep::PowerOfTenMultiplierType>("ActivePower.multiplier", 0);
-        active_power.value = pt.get<int16_t>("ActivePower.value", 0);
+        active_power->multiplier = pt.get<sep::PowerOfTenMultiplierType>("ActivePower.multiplier", 0);
+        active_power->value = pt.get<int16_t>("ActivePower.value", 0);
     }
     
 } // namespace xml
