@@ -24,7 +24,7 @@ namespace xml
         translate(pt);    
     }
     
-    ParseError ActivePowerAdapter::translate(boost::property_tree::ptree &pt) 
+    void ActivePowerAdapter::translate(boost::property_tree::ptree &pt) 
     {
         // if missing default = 0
         active_power.multiplier = pt.get<sep::PowerOfTenMultiplierType>("ActivePower.multiplier", 0);
