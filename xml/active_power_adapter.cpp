@@ -8,16 +8,9 @@
 
 namespace xml
 {
-    ActivePowerAdapter::ActivePowerAdapter()
-        : active_power_(nullptr)
+    ActivePowerAdapter::ActivePowerAdapter(std::shared_ptr<sep::ActivePower> model)
     {
-        // do nothing
-    }
-
-    ActivePowerAdapter::ActivePowerAdapter(std::shared_ptr<sep::ActivePower> active_power)
-        : active_power_(active_power)
-    {
-        // do nothing
+        active_power = model;
     }
 
     ActivePowerAdapter::~ActivePowerAdapter()
@@ -28,24 +21,14 @@ namespace xml
     void ActivePowerAdapter::parse(const std::string &xml)
     {
         boost::property_tree::ptree pt = treeify(xml);
-        ParseError err = translate(pt);
-        std::cout << "ActivePowerAdapter Debug: " << util::enum_value(err) << std::endl;       
+        translate(pt);    
     }
     
     ParseError ActivePowerAdapter::translate(boost::property_tree::ptree &pt) 
     {
         // if missing default = 0
-        int8_t multiplier = pt.get<int8_t>("ActivePower.multiplier", 0);
-        if (!sep::checkPowerOfTenMultiplier(multiplier))
-        {
-            return xml::ParseError::VALUE_BOUNDS;
-        }
-
-        sep::PowerOfTenMultiplierType power_of_ten = sep::PowerOfTenMultiplierType(multiplier);
-        int16_t value = pt.get<int16_t>("ActivePower.value", 0);
-        std::cout << "ActivePowerAdapter Debug: translate" << std::endl;  
-        active_power_ = std::make_shared<sep::ActivePower>(power_of_ten, value);
-        return xml::ParseError::NONE;
+        active_power.multiplier = pt.get<sep::PowerOfTenMultiplierType>("ActivePower.multiplier", 0);
+        active_power.value = pt.get<int16_t>("ActivePower.value", 0);
     }
     
 } // namespace xml

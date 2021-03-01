@@ -7,20 +7,12 @@
 
 namespace xml
 {
-    enum class ParseError : int8_t
-    {
-        NONE,
-        INCOMPLETE,
-        VALUE_TYPE,
-        VALUE_BOUNDS
-    };
-
     class Adapter
     {
     public:
         virtual void parse(const std::string &xml) = 0; // pure virtual
-        virtual ParseError translate(boost::property_tree::ptree &tree) = 0;    // pure virtual
-        std::string serialize(boost::property_tree::ptree &tree)
+        virtual void translate(const boost::property_tree::ptree &tree) = 0;    // pure virtual
+        std::string serialize(const boost::property_tree::ptree &tree)
         {
             std::stringstream ss;
             boost::property_tree::xml_parser::write_xml(ss, tree);
@@ -31,7 +23,6 @@ namespace xml
             std::stringstream ss;
             ss << xml;
             boost::property_tree::ptree pt;
-            std::cout << "ActivePowerAdapter Debug: treeify" << std::endl; 
             boost::property_tree::xml_parser::read_xml(ss, pt);
             return pt;
         };
