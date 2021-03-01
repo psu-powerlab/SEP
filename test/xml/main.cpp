@@ -23,7 +23,7 @@ int main(int argc, char **argv) {
         std::cout << "couldn't open xml file" << std::endl;
     };
 
-    boost::property_tree::ptree pt = ap_adapter.parse(xml_str);
+    boost::property_tree::ptree pt = ap_adapter.Parse(xml_str);
     std::cout << ap_adapter.Serialize(pt) << std::endl;
 
     ap_adapter.Translate(pt);

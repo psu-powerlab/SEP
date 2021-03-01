@@ -8,7 +8,7 @@
 
 namespace xml
 {
-    class ActivePowerAdapter : Adapter
+    class ActivePowerAdapter : public Adapter
     {
     public:
         ActivePowerAdapter(const std::shared_ptr<sep::ActivePower> &model);
