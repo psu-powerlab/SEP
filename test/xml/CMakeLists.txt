@@ -40,7 +40,7 @@ add_executable (tests
     active_power_test.cpp
 )
 
-target_link_libraries(tests gtest SEP::Model SEP::XML ${XercesC_LIBRARY} Boost::boost pthread)
+target_link_libraries(tests gtest gtest_main SEP::Model SEP::XML ${XercesC_LIBRARY} Boost::boost pthread)
 target_include_directories(
     tests PUBLIC 
     ${SEP_INCLUDE_DIRS}

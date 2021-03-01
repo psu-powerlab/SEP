@@ -18,13 +18,15 @@ namespace xml
         // do nothing
     }
 
-    void ActivePowerAdapter::parse(const std::string &xml)
+    boost::property_tree::ptree ActivePowerAdapter::Treeify()
     {
-        boost::property_tree::ptree pt = treeify(xml);
-        translate(pt);    
+        boost::property_tree::ptree pt;
+        pt.put("ActivePower.multiplier", active_power_->multiplier);
+        pt.put("ActivePower.value", active_power_->value);
+        return pt;   
     }
     
-    void ActivePowerAdapter::translate(const boost::property_tree::ptree &pt) 
+    void ActivePowerAdapter::Translate(const boost::property_tree::ptree &pt) 
     {
         // if missing default = 0
         active_power_->multiplier = pt.get<sep::PowerOfTenMultiplierType>("ActivePower.multiplier", 0);
