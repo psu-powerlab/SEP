@@ -70,12 +70,10 @@ inline bool ValidateSchema(const char *xsd_path, const std::string &xml_file)
     domParser.parse(*xml_buff);
     if (domParser.getErrorCount() == 0)
     {
-        printf("XML file validated against the schema successfully\n");
         return true;
     }
     else
     {
-        printf("XML file doesn't conform to the schema\n");
         return false;
     }
 }

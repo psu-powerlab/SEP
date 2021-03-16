@@ -12,7 +12,6 @@ class TestActivePowerXML : public ::testing::Test
 protected:
     void SetUp() override 
     {        
-        active_power_xml = std::make_shared<xml::ActivePowerAdapter>(active_power);
         XMLPlatformUtils::Initialize();
 
         // read in the sample file
@@ -37,8 +36,6 @@ protected:
 protected:
     const char *xsd_path = "./sep.xsd";
     std::string xml_str;
-    std::shared_ptr<sep::ActivePower> active_power;
-    std::shared_ptr<xml::ActivePowerAdapter> active_power_xml;
 };
 
 TEST_F(TestActivePowerXML, IsSampleValid) 
@@ -47,18 +44,55 @@ TEST_F(TestActivePowerXML, IsSampleValid)
     EXPECT_EQ(valid, true);       
 }
 
-TEST_F(TestActivePowerXML, IsAdapterParseValid) 
-{    
-    active_power_xml->parse(xml_str);
-    std::cout << "HERE" << std::endl;
-    EXPECT_EQ(active_power_xml->active_power_->multiplier, 1);
-    EXPECT_EQ(active_power_xml->active_power_->value, -32000);  
+TEST_F(TestActivePowerXML, IsAdaterValid) 
+{   
+    std::shared_ptr<sep::ActivePower> active_power = std::make_shared<sep::ActivePower>();
+    xml::ActivePowerAdapter ap_adapter(active_power);
+
+    boost::property_tree::ptree pt = ap_adapter.Parse(xml_str);
+    ap_adapter.Translate(pt);
+
+    EXPECT_EQ(active_power->multiplier, 1);
+    EXPECT_EQ(active_power->value, -32000);
+    
+    boost::property_tree::ptree pt_adapter = ap_adapter.Treeify();
+    std::string xml_adapter = ap_adapter.Serialize(pt_adapter);
+    bool valid = ValidateSchema(xsd_path, xml_adapter);
+    EXPECT_EQ(valid, true);   
 }
 
-TEST_F(TestActivePowerXML, IsAdapterSerializeValid)
-{    
-    boost::property_tree::ptree pt = active_power_xml->treeify(xml_str);
-    std::string adapter_xml = active_power_xml->serialize(pt);
-    bool valid = ValidateSchema(xsd_path, adapter_xml);
-    EXPECT_EQ(valid, true);    
+TEST_F(TestActivePowerXML, DoesAdapterMatchSample) 
+{   
+    std::shared_ptr<sep::ActivePower> active_power = std::make_shared<sep::ActivePower>();
+    xml::ActivePowerAdapter ap_adapter(active_power);
+
+    boost::property_tree::ptree pt = ap_adapter.Parse(xml_str);
+    ap_adapter.Translate(pt);    
+    boost::property_tree::ptree pt_adapter = ap_adapter.Treeify();
+    std::string xml_adapter = ap_adapter.Serialize(pt_adapter);
+    EXPECT_EQ(xml_str, xml_adapter);   
+}
+
+TEST_F(TestActivePowerXML, DoesAdapterCatchInvalidMultiplier) 
+{   
+    std::shared_ptr<sep::ActivePower> active_power = std::make_shared<sep::ActivePower>();
+    xml::ActivePowerAdapter ap_adapter(active_power);
+
+    boost::property_tree::ptree pt = ap_adapter.Parse(xml_str);
+    ap_adapter.Translate(pt);    
+    boost::property_tree::ptree pt_adapter = ap_adapter.Treeify();
+    std::string xml_adapter = ap_adapter.Serialize(pt_adapter);
+    EXPECT_EQ(xml_str, xml_adapter);   
+}
+
+TEST_F(TestActivePowerXML, DoesAdapterCatchInvalidMultiplier) 
+{   
+    std::shared_ptr<sep::ActivePower> active_power = std::make_shared<sep::ActivePower>();
+    xml::ActivePowerAdapter ap_adapter(active_power);
+
+    boost::property_tree::ptree pt = ap_adapter.Parse(xml_str);
+    ap_adapter.Translate(pt);    
+    boost::property_tree::ptree pt_adapter = ap_adapter.Treeify();
+    std::string xml_adapter = ap_adapter.Serialize(pt_adapter);
+    EXPECT_EQ(xml_str, xml_adapter);   
 }
