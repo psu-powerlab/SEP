@@ -2,6 +2,7 @@
 #include <fstream>
 #include <string>
 #include <memory>
+#include <climits>
 #include <gtest/gtest.h>
 #include <sep/active_power.hpp>
 #include <xml/active_power_adapter.hpp>
@@ -73,26 +74,18 @@ TEST_F(TestActivePowerXML, DoesAdapterMatchSample)
     EXPECT_EQ(xml_str, xml_adapter);   
 }
 
-TEST_F(TestActivePowerXML, DoesAdapterCatchInvalidMultiplier) 
+TEST_F(TestActivePowerXML, DoesXercesCatchHighValues) 
 {   
     std::shared_ptr<sep::ActivePower> active_power = std::make_shared<sep::ActivePower>();
     xml::ActivePowerAdapter ap_adapter(active_power);
 
     boost::property_tree::ptree pt = ap_adapter.Parse(xml_str);
-    ap_adapter.Translate(pt);    
+    pt.put("ActivePower.multiplier", 9+1);
+    pt.put("ActivePower.value", 32767 + 1);
+    ap_adapter.Translate(pt);
+    
     boost::property_tree::ptree pt_adapter = ap_adapter.Treeify();
     std::string xml_adapter = ap_adapter.Serialize(pt_adapter);
-    EXPECT_EQ(xml_str, xml_adapter);   
-}
-
-TEST_F(TestActivePowerXML, DoesAdapterCatchInvalidMultiplier) 
-{   
-    std::shared_ptr<sep::ActivePower> active_power = std::make_shared<sep::ActivePower>();
-    xml::ActivePowerAdapter ap_adapter(active_power);
-
-    boost::property_tree::ptree pt = ap_adapter.Parse(xml_str);
-    ap_adapter.Translate(pt);    
-    boost::property_tree::ptree pt_adapter = ap_adapter.Treeify();
-    std::string xml_adapter = ap_adapter.Serialize(pt_adapter);
-    EXPECT_EQ(xml_str, xml_adapter);   
+    bool valid = ValidateSchema(xsd_path, xml_adapter);
+    EXPECT_EQ(valid, true);   
 }
