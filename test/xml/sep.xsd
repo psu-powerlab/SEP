@@ -5978,7 +5978,7 @@ All other values reserved.</xs:documentation>
       <xs:extension base="UInt32" />
     </xs:simpleContent>
   </xs:complexType>
-  <xs:complexType name="PowerOfTenMultiplierType">
+  <xs:simpleType name="PowerOfTenMultiplierType">
     <xs:annotation>
       <xs:documentation>-9 = nano=x10^-9
 -6 = micro=x10^-6
@@ -5991,10 +5991,11 @@ All other values reserved.</xs:documentation>
 9 = Giga=x10^9
 This is not a complete list. Any integer between -9 and 9 SHALL be supported, indicating the power of ten multiplier for the units.</xs:documentation>
     </xs:annotation>
-    <xs:simpleContent>
-      <xs:extension base="Int8" />
-    </xs:simpleContent>
-  </xs:complexType>
+    <xs:restriction base="xs:short">
+        <xs:minInclusive value = "-9"/>
+        <xs:maxInclusive value = "9"/>
+    </xs:restriction>
+  </xs:simpleType>
   <xs:complexType name="PrimacyType">
     <xs:annotation>
       <xs:documentation>Values possible for indication of "Primary" provider: 

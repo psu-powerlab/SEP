@@ -3,9 +3,10 @@
 #include <string>
 #include <memory>
 #include <climits>
+#include <algorithm>
 #include <gtest/gtest.h>
-#include <sep/active_power.hpp>
-#include <xml/active_power_adapter.hpp>
+#include "models.hpp"
+#include "adapter.hpp"
 #include "xml_validator.hpp"
 
 class TestActivePowerXML : public ::testing::Test 
@@ -13,8 +14,6 @@ class TestActivePowerXML : public ::testing::Test
 protected:
     void SetUp() override 
     {        
-        XMLPlatformUtils::Initialize();
-
         // read in the sample file
         std::ifstream ifs("./sep_examples/ActivePower.xml");
         if (ifs)
@@ -31,61 +30,77 @@ protected:
 
     void TearDown() override
     {
-        XMLPlatformUtils::Terminate(); 
+        // do nothing
     }
 
 protected:
-    const char *xsd_path = "./sep.xsd";
     std::string xml_str;
+    XmlValidator validator;
 };
 
 TEST_F(TestActivePowerXML, IsSampleValid) 
-{    
-    bool valid = ValidateSchema(xsd_path, xml_str);
-    EXPECT_EQ(valid, true);       
+{   
+    EXPECT_TRUE(validator.ValidateXml(xml_str));      
 }
 
-TEST_F(TestActivePowerXML, IsAdaterValid) 
+TEST_F(TestActivePowerXML, IsAdapterValid) 
 {   
-    std::shared_ptr<sep::ActivePower> active_power = std::make_shared<sep::ActivePower>();
-    xml::ActivePowerAdapter ap_adapter(active_power);
+    // create model, convert it into a string and then reparse to see if the string was valid
+    sep::ActivePower *active_power = new sep::ActivePower;
+    xml::Parse(xml_str, active_power);
+    EXPECT_TRUE(active_power != nullptr);
+    delete active_power;
+}
 
-    boost::property_tree::ptree pt = ap_adapter.Parse(xml_str);
-    ap_adapter.Translate(pt);
-
+TEST_F(TestActivePowerXML, IsAdapterTranslationAccurate) 
+{   
+    // create model, convert it into a string and then reparse to see if the string was valid
+    sep::ActivePower *active_power = new sep::ActivePower;
+    xml::Parse(xml_str, active_power);
     EXPECT_EQ(active_power->multiplier, 1);
     EXPECT_EQ(active_power->value, -32000);
-    
-    boost::property_tree::ptree pt_adapter = ap_adapter.Treeify();
-    std::string xml_adapter = ap_adapter.Serialize(pt_adapter);
-    bool valid = ValidateSchema(xsd_path, xml_adapter);
-    EXPECT_EQ(valid, true);   
 }
 
-TEST_F(TestActivePowerXML, DoesAdapterMatchSample) 
+TEST_F(TestActivePowerXML, CheckAdapterMultiplierMaxInclusive) 
 {   
-    std::shared_ptr<sep::ActivePower> active_power = std::make_shared<sep::ActivePower>();
-    xml::ActivePowerAdapter ap_adapter(active_power);
-
-    boost::property_tree::ptree pt = ap_adapter.Parse(xml_str);
-    ap_adapter.Translate(pt);    
-    boost::property_tree::ptree pt_adapter = ap_adapter.Treeify();
-    std::string xml_adapter = ap_adapter.Serialize(pt_adapter);
-    EXPECT_EQ(xml_str, xml_adapter);   
+    boost::property_tree::ptree pt;
+    pt.put("ActivePower.multiplier", 10);
+    pt.put("ActivePower.value", -32000);
+    std::string xml_adapter = xml::util::Stringify(pt);
+    sep::ActivePower *active_power = nullptr;
+    xml::Parse(xml_adapter, active_power);
+    EXPECT_TRUE(active_power == nullptr);
 }
 
-TEST_F(TestActivePowerXML, DoesXercesCatchHighValues) 
+TEST_F(TestActivePowerXML, CheckAdapterMultiplierMinInclusive) 
 {   
-    std::shared_ptr<sep::ActivePower> active_power = std::make_shared<sep::ActivePower>();
-    xml::ActivePowerAdapter ap_adapter(active_power);
+    boost::property_tree::ptree pt;
+    pt.put("ActivePower.multiplier", -10);
+    pt.put("ActivePower.value", -32000);
+    std::string xml_adapter = xml::util::Stringify(pt);
+    sep::ActivePower *active_power = nullptr;
+    xml::Parse(xml_adapter, active_power);
+    EXPECT_TRUE(active_power == nullptr);
+}
 
-    boost::property_tree::ptree pt = ap_adapter.Parse(xml_str);
-    pt.put("ActivePower.multiplier", 9+1);
-    pt.put("ActivePower.value", 32767 + 1);
-    ap_adapter.Translate(pt);
-    
-    boost::property_tree::ptree pt_adapter = ap_adapter.Treeify();
-    std::string xml_adapter = ap_adapter.Serialize(pt_adapter);
-    bool valid = ValidateSchema(xsd_path, xml_adapter);
-    EXPECT_EQ(valid, true);   
+TEST_F(TestActivePowerXML, CheckAdapterValueMaxInclusive) 
+{   
+    boost::property_tree::ptree pt;
+    pt.put("ActivePower.multiplier", 1);
+    pt.put("ActivePower.value", 32768);
+    std::string xml_adapter = xml::util::Stringify(pt);
+    sep::ActivePower *active_power = nullptr;
+    xml::Parse(xml_adapter, active_power);
+    EXPECT_TRUE(active_power == nullptr); 
+}
+
+TEST_F(TestActivePowerXML, CheckAdapterValueMinInclusive) 
+{   
+    boost::property_tree::ptree pt;
+    pt.put("ActivePower.multiplier", 1);
+    pt.put("ActivePower.value", -32769);
+    std::string xml_adapter = xml::util::Stringify(pt);
+    sep::ActivePower *active_power = nullptr;
+    xml::Parse(xml_adapter, active_power);
+    EXPECT_TRUE(active_power == nullptr);
 }

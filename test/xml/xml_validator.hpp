@@ -3,13 +3,16 @@
 // The following code was found at
 // https://sivachandranp.wordpress.com/2010/10/10/xml-schema-validation-using-xerces-c/
 #include <stdio.h>
+#include <string>
 #include <xercesc/util/XMLString.hpp>
 #include <xercesc/parsers/XercesDOMParser.hpp>
-#include <xercesc/framework/LocalFileInputSource.hpp>
-#include <xercesc/framework/MemBufInputSource.hpp>
 #include <xercesc/sax/ErrorHandler.hpp>
 #include <xercesc/sax/SAXParseException.hpp>
+#include <xercesc/framework/LocalFileInputSource.hpp>
+#include <xercesc/framework/MemBufInputSource.hpp>
 #include <xercesc/validators/common/Grammar.hpp>
+#include <boost/property_tree/ptree.hpp>
+#include <boost/property_tree/xml_parser.hpp>
 
 XERCES_CPP_NAMESPACE_USE
 
@@ -46,36 +49,23 @@ public:
     }
 };
 
-inline bool ValidateSchema(const char *xsd_path, const std::string &xml_file)
+/**
+ * The Singleton class defines the `GetInstance` method that serves as an
+ * alternative to constructor and lets clients access the same instance of this
+ * class over and over.
+ */
+class XmlValidator
 {
-    XercesDOMParser domParser;
-    if (domParser.loadGrammar(xsd_path, Grammar::SchemaGrammarType) == NULL)
-    {
-        fprintf(stderr, "couldn't load schema\n");
-        return false;
-    }
+public:
+    XmlValidator();
+    ~XmlValidator();
+    bool ValidateXml(const std::string &xml_str);
 
-    ParserErrorHandler parserErrorHandler;
-
-    domParser.setErrorHandler(&parserErrorHandler);
-    domParser.setValidationScheme(XercesDOMParser::Val_Auto);
-    domParser.setDoNamespaces(true);
-    domParser.setDoSchema(true);
-    domParser.setValidationConstraintFatal(true);
-
-    xercesc::MemBufInputSource* xml_buff = new MemBufInputSource(
-        (const XMLByte*)xml_file.c_str(), strlen(xml_file.c_str()), "test", false
-    );
-
-    domParser.parse(*xml_buff);
-    if (domParser.getErrorCount() == 0)
-    {
-        return true;
-    }
-    else
-    {
-        return false;
-    }
-}
+private:
+    XercesDOMParser *dom_parser_;
+    ParserErrorHandler *parser_error_handler_;
+    const char *xsd_path_ = "sep.xsd";
+    const char *schema_location_ = "urn:ieee:std:2030.5:ns sep.xsd";
+};
 
 #endif // __XML_VALIDATOR_H__

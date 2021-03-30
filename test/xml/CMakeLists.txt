@@ -37,7 +37,10 @@ FetchContent_MakeAvailable(SEP googletest)
 
 add_executable (tests
     main.cpp
+    adapter.cpp
+    xml_validator.cpp
     active_power_test.cpp
+    flow_reservation_request_test.cpp
 )
 
 target_link_libraries(tests gtest gtest_main SEP::Model SEP::XML ${XercesC_LIBRARY} Boost::boost pthread)
