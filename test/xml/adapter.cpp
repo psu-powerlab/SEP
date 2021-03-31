@@ -148,7 +148,11 @@ namespace xml
         pt.put("FlowReservationResponse.EventStatus.reason", fr_response.event_status.reason);
         pt.put("FlowReservationResponse.interval.duration", fr_response.interval.duration);
         pt.put("FlowReservationResponse.interval.start", fr_response.interval.start);
-        pt.put("FlowReservationResponse.energyAvailable.multiplier", fr_response.signed_real_energy);
+        pt.put("FlowReservationResponse.energyAvailable.multiplier", fr_response.energy_available.multiplier);
+        pt.put("FlowReservationResponse.energyAvailable.value", fr_response.energy_available.value);
+        pt.put("FlowReservationResponse.powerAvailable.multiplier", fr_response.power_available.multiplier);
+        pt.put("FlowReservationResponse.powerAvailable.value", fr_response.power_available.value);
+        pt.put("FlowReservationResponse.subject", fr_response.subject);
         xml::util::SetSchema(&pt);
         return xml::util::Stringify(pt); 
     }
@@ -159,6 +163,9 @@ namespace xml
 
         if (validator.ValidateXml(xml::util::Stringify(pt)))
         {
+            fr_response->subscribable = static_cast<sep::SubscribableType>(
+                pt.get<uint8_t>("FlowReservationRequest.RequestStatus.requestStatus", 0)
+            );
             fr_response->href = pt.get<std::string>("FlowReservationResponse.<xmlattr>.replyTo", "http://uri1");
             fr_response->mrid = pt.get<std::string>("FlowReservationResponse.MRID", "0FB7");
             return true;

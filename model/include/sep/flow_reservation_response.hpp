@@ -14,7 +14,7 @@ namespace sep
     {
         sep::SignedRealEnergy energy_available; // energy in watt-hours
         sep::ActivePower power_available;       // power in watts
-        std::string mrid;                       // match event
+        std::string subject;                    // match event
     };
 };     // namespace sep
 #endif // __FLOW_RESERVATION_RESPONSE_H__
