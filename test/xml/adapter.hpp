@@ -15,20 +15,24 @@ namespace xml
 {
     namespace util
     {
-        boost::property_tree::ptree SetSchema(boost::property_tree::ptree &pt);
-        boost::property_tree::ptree Treeify(std::string &xml_str);
-        std::string Stringify(boost::property_tree::ptree &pt);
+        void SetSchema(boost::property_tree::ptree *pt);
+        boost::property_tree::ptree Treeify(const std::string &xml_str);
+        std::string Stringify(boost::property_tree::ptree pt);
         template <class Enum>
         underlying_type_t <Enum> ToUnderlyingType (Enum e);
     } // namespace util
 
     // Active Power
-    std::string Serialize(sep::ActivePower &active_power);
-    bool Parse (std::string &xml_str, sep::ActivePower *active_power);
+    std::string Serialize(const sep::ActivePower &active_power);
+    bool Parse (const std::string &xml_str, sep::ActivePower *active_power);
 
     // Flow Reservation Request
-    std::string Serialize(sep::FlowReservationRequest &fr_request);
-    bool Parse(std::string &xml_str, sep::FlowReservationRequest *fr_request);
+    std::string Serialize(const sep::FlowReservationRequest &fr_request);
+    bool Parse(const std::string &xml_str, sep::FlowReservationRequest *fr_request);
+
+    // Flow Reservation Response
+    std::string Serialize(const sep::FlowReservationResponse &fr_response);
+    bool Parse(const std::string &xml_str, sep::FlowReservationResponse *fr_response);
 } // namespace xml
 
 #endif // __ADAPTER_H__

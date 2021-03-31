@@ -42,3 +42,10 @@ TEST_F(TestFlowReservationResponseXML, IsSampleValid)
 {   
     EXPECT_TRUE(validator.ValidateXml(xml_str));      
 }
+
+TEST_F(TestFlowReservationResponseXML, IsAdapterValid) 
+{   
+    sep::FlowReservationResponse *fr_response = new sep::FlowReservationResponse;
+    EXPECT_TRUE(xml::Parse(xml_str, fr_response));
+    delete fr_response;
+}

@@ -1,8 +1,8 @@
 #ifndef __RESPONDABLE_RESOURCE_H__
 #define __RESPONDABLE_RESOURCE_H__
 #include <cstdint>
+#include <string>
 #include "resource.hpp"
-#include "link.hpp"
 
 namespace sep
 {
@@ -17,7 +17,7 @@ namespace sep
     struct RespondableResource : Resource
     {
         sep::Resource resource;
-        sep::Link reply_to;
+        std::string reply_to;
         sep::ResponseRequired response_required;
     };
 };     // namespace sep
