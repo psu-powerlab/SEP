@@ -140,9 +140,15 @@ namespace xml
         pt.put("FlowReservationResponse.version", fr_response.version);
         pt.put(
             "FlowReservationResponse.EventStatus.currentStatus", 
-             xml::util::ToUnderlyingType(fr_response.current_status)
+             xml::util::ToUnderlyingType(fr_response.event_status.current_status)
         );
-        pt.put("FlowReservationResponse.EventStatus.dateTime", fr_response.date_time);
+        pt.put("FlowReservationResponse.EventStatus.dateTime", fr_response.event_status.date_time);
+        pt.put("FlowReservationResponse.EventStatus.potentiallySuperseded", fr_response.event_status.potentially_superseded);
+        pt.put("FlowReservationResponse.EventStatus.potentiallySupersededTime", fr_response.event_status.potentially_superseded_time);
+        pt.put("FlowReservationResponse.EventStatus.reason", fr_response.event_status.reason);
+        pt.put("FlowReservationResponse.interval.duration", fr_response.interval.duration);
+        pt.put("FlowReservationResponse.interval.start", fr_response.interval.start);
+        pt.put("FlowReservationResponse.energyAvailable.multiplier", fr_response.signed_real_energy);
         xml::util::SetSchema(&pt);
         return xml::util::Stringify(pt); 
     }
