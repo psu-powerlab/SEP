@@ -5456,6 +5456,13 @@ See Table 27 for the list of appropriate Response status codes to be sent for th
 2 - End user / customer response is required. 
 All other values reserved.</xs:documentation>
           </xs:annotation>
+          <xs:simpleType>
+            <xs:restriction base="HexBinary8">
+              <xs:enumeration value="0"/>
+              <xs:enumeration value="1"/>
+              <xs:enumeration value="2"/>
+            </xs:restriction>
+          </xs:simpleType>
         </xs:attribute>
       </xs:extension>
     </xs:complexContent>
@@ -5601,7 +5608,7 @@ All other values reserved</xs:documentation>
       <xs:documentation>Current status information relevant to a specific object. The Status object is used to indicate the current status of an Event. Devices can read the containing resource (e.g. TextMessage) to get the most up to date status of the event.  Devices can also subscribe to a specific resource instance to get updates when any of its attributes change, including the Status object.</xs:documentation>
     </xs:annotation>
     <xs:sequence>
-      <xs:element name="currentStatus" minOccurs="1" maxOccurs="1" type="UInt8">
+      <xs:element name="currentStatus" minOccurs="1" maxOccurs="1">
         <xs:annotation>
           <xs:documentation>Field representing the current status type. 
 
@@ -5623,6 +5630,14 @@ Client devices encountering a Superseded event SHALL terminate execution of the 
 
 All other values reserved.</xs:documentation>
         </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="UInt8">
+            <xs:enumeration value="0"/>
+            <xs:enumeration value="1"/>
+            <xs:enumeration value="2"/>
+            <xs:enumeration value="4"/>
+          </xs:restriction>
+        </xs:simpleType>
       </xs:element>
       <xs:element name="dateTime" minOccurs="1" maxOccurs="1" type="TimeType">
         <xs:annotation>
@@ -6109,7 +6124,12 @@ All other values reserved.</xs:documentation>
 3 - Resource supports both conditional and non-conditional subscriptions
 All other values reserved.</xs:documentation>
     </xs:annotation>
-    <xs:restriction base="UInt8" />
+    <xs:restriction base="UInt8">
+      <xs:enumeration value="0"/>
+      <xs:enumeration value="1"/>
+      <xs:enumeration value="2"/>
+      <xs:enumeration value="3"/>
+    </xs:restriction>
   </xs:simpleType>
   <xs:complexType name="TimeOffsetType">
     <xs:annotation>

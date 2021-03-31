@@ -8,9 +8,9 @@ namespace sep
 {
     enum class ResponseRequired : uint8_t
     {
-        kRecieved = 1 << 0,
-        kSpecificResponse = 1 << 1,
-        kResponseRequired = 1 << 2
+        kRecieved,
+        kSpecificResponse,
+        kResponseRequired
     };
 
     // A Resource to which a Response can be requested.

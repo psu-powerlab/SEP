@@ -130,8 +130,19 @@ namespace xml
              xml::util::ToUnderlyingType(fr_response.subscribable)
         );
         pt.put("FlowReservationResponse.<xmlattr>.replyTo", fr_response.reply_to);
+        pt.put(
+            "FlowReservationResponse.<xmlattr>.responseRequired", 
+             xml::util::ToUnderlyingType(fr_response.response_required)
+        );
         pt.put("FlowReservationResponse.<xmlattr>.href", fr_response.href);
         pt.put("FlowReservationResponse.mRID", fr_response.mrid);
+        pt.put("FlowReservationResponse.description", fr_response.description);
+        pt.put("FlowReservationResponse.version", fr_response.version);
+        pt.put(
+            "FlowReservationResponse.EventStatus.currentStatus", 
+             xml::util::ToUnderlyingType(fr_response.current_status)
+        );
+        pt.put("FlowReservationResponse.EventStatus.dateTime", fr_response.date_time);
         xml::util::SetSchema(&pt);
         return xml::util::Stringify(pt); 
     }

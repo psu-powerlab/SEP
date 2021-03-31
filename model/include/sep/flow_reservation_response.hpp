@@ -12,7 +12,6 @@ namespace sep
     // part of the distribution system.
     struct FlowReservationResponse : Event
     {
-        sep::Event event;
         sep::SignedRealEnergy signed_real_energy; // energy in watt-hours
         sep::ActivePower active_power;            // power in watts
         std::string mrid_type_;                   // match event
