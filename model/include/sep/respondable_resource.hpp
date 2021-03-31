@@ -14,7 +14,7 @@ namespace sep
     };
 
     // A Resource to which a Response can be requested.
-    struct RespondableResource
+    struct RespondableResource : Resource
     {
         sep::Resource resource;
         sep::Link reply_to;

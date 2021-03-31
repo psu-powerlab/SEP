@@ -24,11 +24,11 @@ namespace xml
 
     // Active Power
     std::string Serialize(sep::ActivePower &active_power);
-    void Parse (std::string &xml_str, sep::ActivePower *active_power);
+    bool Parse (std::string &xml_str, sep::ActivePower *active_power);
 
     // Flow Reservation Request
     std::string Serialize(sep::FlowReservationRequest &fr_request);
-    void Parse(std::string &xml_str, sep::FlowReservationRequest *fr_request);
+    bool Parse(std::string &xml_str, sep::FlowReservationRequest *fr_request);
 } // namespace xml
 
 #endif // __ADAPTER_H__

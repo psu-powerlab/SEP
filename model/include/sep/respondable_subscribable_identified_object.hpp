@@ -7,9 +7,8 @@
 namespace sep
 {
     // An IdentifiedObject to which a Response can be requested.
-    struct RespondableSubscribableIdentifiedObject
+    struct RespondableSubscribableIdentifiedObject : RespondableResource
     {
-        sep::RespondableResource respondable_resource;
         std::string mrid;
         std::string description;
         std::string version;

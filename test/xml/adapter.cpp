@@ -58,7 +58,7 @@ namespace xml
         return xml::util::Stringify(pt);
     };
 
-    void Parse(std::string &xml_str, sep::ActivePower *active_power)
+    bool Parse(std::string &xml_str, sep::ActivePower *active_power)
     {
         boost::property_tree::ptree pt = xml::util::Treeify(xml_str);
 
@@ -66,20 +66,19 @@ namespace xml
         {
             active_power->multiplier = pt.get<sep::PowerOfTenMultiplierType>("ActivePower.multiplier", 0);
             active_power->value = pt.get<int16_t>("ActivePower.value", 0);
+            return true;
         }
-        else
-        {
-            active_power = nullptr;
-        }
+
+        return false;
     };
 
      // Flow Reservation Request
     std::string Serialize(sep::FlowReservationRequest &fr_request)
     {
         boost::property_tree::ptree pt;
-        pt.put("FlowReservationRequest.mRID", "0FB7");
-        pt.put("FlowReservationRequest.description", "description1");
-        pt.put("FlowReservationRequest.version", 0);
+        pt.put("FlowReservationRequest.mRID", fr_request.mrid);
+        pt.put("FlowReservationRequest.description",fr_request.description);
+        pt.put("FlowReservationRequest.version", fr_request.version);
         pt.put("FlowReservationRequest.creationTime", fr_request.creation_time);
         pt.put("FlowReservationRequest.durationRequested", fr_request.duration_requested);
         pt.put("FlowReservationRequest.energyRequested.multiplier", fr_request.energy_requested.multiplier);
@@ -97,12 +96,15 @@ namespace xml
         return xml::util::Stringify(pt);
     };
 
-    void Parse(std::string &xml_str, sep::FlowReservationRequest *fr_request)
+    bool Parse(std::string &xml_str, sep::FlowReservationRequest *fr_request)
     {
         boost::property_tree::ptree pt = xml::util::Treeify(xml_str);
 
         if (validator.ValidateXml(xml::util::Stringify(pt)))
         {
+            fr_request->mrid = pt.get<std::string>("FlowReservationRequest.mRID", "00");
+            fr_request->description = pt.get<std::string>("FlowReservationRequest.description", "");
+            fr_request->version = pt.get<uint16_t>("FlowReservationRequest.mRID", 0);
             fr_request->creation_time = pt.get<sep::TimeType>("FlowReservationRequest.creationTime", 0);
             fr_request->duration_requested = pt.get<uint16_t>("FlowReservationRequest.durationRequested", 0);
             fr_request->energy_requested.multiplier = pt.get<sep::PowerOfTenMultiplierType>("FlowReservationRequest.energyRequested.multiplier", 0);
@@ -113,10 +115,9 @@ namespace xml
             fr_request->power_requested.value =  pt.get<sep::PowerOfTenMultiplierType>("FlowReservationRequest.powerRequested.value", 0);
             fr_request->request_status.datetime =   pt.get<sep::TimeType>("FlowReservationRequest.RequestStatus.dateTime", 0);
             fr_request->request_status.status =  static_cast<sep::Status>(pt.get<uint8_t>("FlowReservationRequest.RequestStatus.requestStatus", 0));
+            return true;
         }
-        else
-        {
-            fr_request = nullptr;
-        }
+
+        return false;
     };
 };

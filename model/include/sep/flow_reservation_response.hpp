@@ -10,7 +10,7 @@ namespace sep
     // The server may modify the charging or discharging parameters and interval
     // to provide a lower aggregated demand at the premises, or within a larger
     // part of the distribution system.
-    struct FlowReservationResponse
+    struct FlowReservationResponse : Event
     {
         sep::Event event;
         sep::SignedRealEnergy signed_real_energy; // energy in watt-hours
