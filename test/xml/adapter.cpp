@@ -103,9 +103,9 @@ namespace xml
         if (validator.ValidateXml(xml::util::Stringify(pt)))
         {
             fr_request->href = pt.get<std::string>("FlowReservationRequest.<xmlattr>.href", "");
-            fr_request->mrid = pt.get<std::string>("FlowReservationRequest.mRID", "00");
+            fr_request->mrid = pt.get<std::string>("FlowReservationRequest.mRID", "");
             fr_request->description = pt.get<std::string>("FlowReservationRequest.description", "");
-            fr_request->version = pt.get<uint16_t>("FlowReservationRequest.mRID", 0);
+            fr_request->version = pt.get<uint16_t>("FlowReservationRequest.version", 0);
             fr_request->creation_time = pt.get<sep::TimeType>("FlowReservationRequest.creationTime", 0);
             fr_request->duration_requested = pt.get<uint16_t>("FlowReservationRequest.durationRequested", 0);
             fr_request->energy_requested.multiplier = pt.get<sep::PowerOfTenMultiplierType>("FlowReservationRequest.energyRequested.multiplier", 0);
@@ -164,10 +164,30 @@ namespace xml
         if (validator.ValidateXml(xml::util::Stringify(pt)))
         {
             fr_response->subscribable = static_cast<sep::SubscribableType>(
-                pt.get<uint8_t>("FlowReservationRequest.RequestStatus.requestStatus", 0)
+                pt.get<uint8_t>("FlowReservationRequest.<xmlattr>.subscribable", 0)
             );
-            fr_response->href = pt.get<std::string>("FlowReservationResponse.<xmlattr>.replyTo", "http://uri1");
-            fr_response->mrid = pt.get<std::string>("FlowReservationResponse.MRID", "0FB7");
+            fr_response->reply_to = pt.get<std::string>("FlowReservationResponse.<xmlattr>.replyTo", "");
+            fr_response->response_required = static_cast<sep::ResponseRequired>(
+                pt.get<uint8_t>("FlowReservationRequest.<xmlattr>.responseRequired", 0x00)
+            );
+            fr_response->href = pt.get<std::string>("FlowReservationResponse.<xmlattr>.href", "");
+            fr_response->mrid = pt.get<std::string>("FlowReservationResponse.mRID", "");
+            fr_response->description = pt.get<std::string>("FlowReservationResponse.description", "");
+            fr_response->version = pt.get<uint16_t>("FlowReservationResponse.version", 0);
+            fr_response->event_status.current_status = static_cast<sep::CurrentStatus>(
+                pt.get<uint8_t>("FlowReservationRequest.EventStatus.currentStatus", 0)
+            );
+            fr_response->event_status.date_time = pt.get<uint8_t>("FlowReservationRequest.EventStatus.dateTime", 0);
+            fr_response->event_status.potentially_superseded = pt.get<bool>("FlowReservationRequest.EventStatus.potentiallySuperseded", false);
+            fr_response->event_status.potentially_superseded_time = pt.get<sep::TimeType>("FlowReservationRequest.EventStatus.potentiallySupersededTime", 0);
+            fr_response->event_status.reason = pt.get<std::string>("FlowReservationRequest.EventStatus.reason", "");
+            fr_response->interval.duration = pt.get<uint32_t>("FlowReservationRequest.interval.duration", 0);
+            fr_response->interval.start = pt.get<sep::TimeType>("FlowReservationRequest.interval.start", 0);
+            fr_response->energy_available.multiplier = pt.get<uint8_t>("FlowReservationRequest.energyAvailable.multiplier", 0);
+            fr_response->energy_available.value = pt.get<int64_t>("FlowReservationRequest.energyAvailable.value", 0);
+            fr_response->power_available.multiplier = pt.get<uint8_t>("FlowReservationRequest.powerAvailable.multiplier", 0);
+            fr_response->power_available.value = pt.get<int16_t>("FlowReservationRequest.powerAvailable.value", 0);
+            fr_response->subject = pt.get<std::string>("FlowReservationRequest.subject", "");
             return true;
         }
 

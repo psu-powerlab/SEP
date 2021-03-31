@@ -11,7 +11,7 @@ namespace sep
     {
         std::string mrid;
         std::string description;
-        std::string version;
+        uint16_t version;
         sep::SubscribableType subscribable;
     };
 };     // namespace sep

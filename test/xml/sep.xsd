@@ -5443,7 +5443,7 @@ All other values reserved.</xs:documentation>
             <xs:documentation>A reference to the response resource address (URI). Required on a response to a GET if responseRequired is "true".</xs:documentation>
           </xs:annotation>
         </xs:attribute>
-        <xs:attribute name="responseRequired" use="optional" default="00" type="HexBinary8">
+        <xs:attribute name="responseRequired" use="optional" default="00">
           <xs:annotation>
             <xs:documentation>Indicates whether or not a response is required upon receipt, creation or update of this resource. Responses shall be posted to the collection specified in "replyTo". 
 
@@ -5458,9 +5458,9 @@ All other values reserved.</xs:documentation>
           </xs:annotation>
           <xs:simpleType>
             <xs:restriction base="HexBinary8">
-              <xs:enumeration value="0"/>
-              <xs:enumeration value="1"/>
-              <xs:enumeration value="2"/>
+              <xs:enumeration value="00"/>
+              <xs:enumeration value="01"/>
+              <xs:enumeration value="02"/>
             </xs:restriction>
           </xs:simpleType>
         </xs:attribute>
