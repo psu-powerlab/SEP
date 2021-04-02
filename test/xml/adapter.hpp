@@ -20,6 +20,11 @@ namespace xml
         std::string Stringify(boost::property_tree::ptree pt);
         template <class Enum>
         underlying_type_t <Enum> ToUnderlyingType (Enum e);
+        template <typename T>
+        std::string Hexify (T number);
+        template <typename T>
+        T Dehexify (const std::string hexidecimal);
+
     } // namespace util
 
     // Active Power
