@@ -38,6 +38,10 @@ namespace xml
     // Flow Reservation Response
     std::string Serialize(const sep::FlowReservationResponse &fr_response);
     bool Parse(const std::string &xml_str, sep::FlowReservationResponse *fr_response);
+
+    // Flow Reservation Response
+    std::string Serialize(const sep::DeviceCapability &dcap);
+    bool Parse(const std::string &xml_str, sep::DeviceCapability *dcap);
 } // namespace xml
 
 #endif // __ADAPTER_H__

@@ -43,6 +43,7 @@ add_executable (tests
     active_power_test.cpp
     flow_reservation_request_test.cpp
     flow_reservation_response_test.cpp
+    device_capability_test.cpp
 )
 
 target_link_libraries(tests gtest gtest_main SEP::Model SEP::XML ${XercesC_LIBRARY} Boost::boost pthread)

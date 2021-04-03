@@ -223,4 +223,51 @@ namespace xml
 
         return false;
     }
+    
+    std::string Serialize(const sep::DeviceCapability &dcap) 
+    {
+        boost::property_tree::ptree pt;
+        pt.put("DeviceCapability.<xmlattr>.pollRate", dcap.poll_rate);
+        pt.put("DeviceCapability.<xmlattr>.href", dcap.href);
+        pt.put("DeviceCapability.CustomerAccountListLink.<xmlattr>.href", dcap.customer_account_list_link);
+        pt.put("DeviceCapability.DemandResponseProgramListLink.<xmlattr>.href", dcap.demand_response_program_list_link);
+        pt.put("DeviceCapability.DERProgramListLink.<xmlattr>.href", dcap.der_program_list_link);
+        pt.put("DeviceCapability.FileListLink.<xmlattr>.href", dcap.file_list_link);
+        pt.put("DeviceCapability.MessagingProgramListLink.<xmlattr>.href", dcap.messaging_program_list_link);
+        pt.put("DeviceCapability.PrepaymentListLink.<xmlattr>.href", dcap.prepayment_list_link);
+        pt.put("DeviceCapability.ResponseSetListLink.<xmlattr>.href", dcap.response_set_list_link);
+        pt.put("DeviceCapability.TimeLink.<xmlattr>.href", dcap.time_link);
+        pt.put("DeviceCapability.UsagePointListLink.<xmlattr>.href", dcap.usage_point_list_link);
+        pt.put("DeviceCapability.MirrorUsagePointListLink.<xmlattr>.href", dcap.mirror_usage_point_list_link);
+        pt.put("DeviceCapability.SelfDeviceLink.<xmlattr>.href", dcap.demand_response_program_list_link);
+
+        xml::util::SetSchema(&pt);
+        return xml::util::Stringify(pt); 
+    }
+    
+    bool Parse(const std::string &xml_str, sep::DeviceCapability *dcap) 
+    {
+
+        boost::property_tree::ptree pt = xml::util::Treeify(xml_str);
+
+        if (validator.ValidateXml(xml::util::Stringify(pt)))
+        {
+            dcap->poll_rate = pt.get<uint32_t>("DeviceCapability.<xmlattr>.pollRate", 900);
+            dcap->href = pt.get<std::string>("DeviceCapability.<xmlattr>.href", "");
+            dcap->customer_account_list_link = pt.get<std::string>("DeviceCapability.CustomerAccountListLink.<xmlattr>.href", "");
+            dcap->demand_response_program_list_link = pt.get<std::string>("DeviceCapability.DemandResponseProgramListLink.<xmlattr>.href", "");
+            dcap->der_program_list_link = pt.get<std::string>("DeviceCapability.DERProgramListLink.<xmlattr>.href", "");
+            dcap->file_list_link = pt.get<std::string>("DeviceCapability.FileListLink.<xmlattr>.href", "");
+            dcap->messaging_program_list_link = pt.get<std::string>("DeviceCapability.MessagingProgramListLink.<xmlattr>.href", "");
+            dcap->prepayment_list_link = pt.get<std::string>("DeviceCapability.PrepaymentListLink.<xmlattr>.href", "");
+            dcap->response_set_list_link = pt.get<std::string>("DeviceCapability.ResponseSetListLink.<xmlattr>.href", "");
+            dcap->time_link = pt.get<std::string>("DeviceCapability.TimeLink.<xmlattr>.href", "");
+            dcap->usage_point_list_link = pt.get<std::string>("DeviceCapability.UsagePointListLink.<xmlattr>.href", "");
+            dcap->mirror_usage_point_list_link = pt.get<std::string>("DeviceCapability.MirrorUsagePointListLink.<xmlattr>.href", "");
+            dcap->self_device_link = pt.get<std::string>("DeviceCapability.SelfDeviceLink.<xmlattr>.href", "");
+            return true;
+        }
+
+        return false;
+    }
 };
