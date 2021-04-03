@@ -6,6 +6,8 @@
 
 namespace sep
 {
+    // Returned by the URI provided by DNS-SD, to allow clients to find the URIs 
+    // to the resources in which they are interested.
     struct DeviceCapability : FunctionSetAssignmentsBase
     {
         uint32_t pool_rate = 900;

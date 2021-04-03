@@ -5,6 +5,8 @@
 
 namespace sep
 {
+    // Defines a collection of function set instances that are to be used by one or more 
+    // devices as indicated by the EndDevice object(s) of the server.
     struct FunctionSetAssignmentsBase : Resource
     {
         std::string customer_account_list_link;
