@@ -611,7 +611,7 @@ All other values reserved.</xs:documentation>
               <xs:documentation>Local time: localTime = currentTime + tzOffset (+ dstOffset when in effect).</xs:documentation>
             </xs:annotation>
           </xs:element>
-          <xs:element name="quality" minOccurs="1" maxOccurs="1" type="UInt8"type="UInt8">
+          <xs:element name="quality" minOccurs="1" maxOccurs="1">
             <xs:annotation>
               <xs:documentation>Metric indicating the quality of the time source from which the service acquired time. Lower (smaller) quality enumeration values are assumed to be more accurate.
 3 - time obtained from external authoritative source such as NTP
@@ -621,12 +621,12 @@ All other values reserved.</xs:documentation>
 7 - time intentionally uncoordinated
 All other values are reserved for future use.</xs:documentation>
             </xs:annotation>
-            <xs:simpleContent>
+            <xs:simpleType>
               <xs:restriction base="UInt8">
-                <xs:minInclusive value="3">
-                <xs:maxInclusive value="7">
+                <xs:minInclusive value="3"/>
+                <xs:maxInclusive value="7"/>
               </xs:restriction>
-            </xs:simpleContent>
+            </xs:simpleType>
           </xs:element>
           <xs:element name="tzOffset" minOccurs="1" maxOccurs="1" type="TimeOffsetType">
             <xs:annotation>
