@@ -236,6 +236,7 @@ namespace xml
         pt.put("DeviceCapability.MessagingProgramListLink.<xmlattr>.href", dcap.messaging_program_list_link);
         pt.put("DeviceCapability.PrepaymentListLink.<xmlattr>.href", dcap.prepayment_list_link);
         pt.put("DeviceCapability.ResponseSetListLink.<xmlattr>.href", dcap.response_set_list_link);
+        pt.put("DeviceCapability.TariffProfileListLink.<xmlattr>.href", dcap.tariff_profile_list_link);
         pt.put("DeviceCapability.TimeLink.<xmlattr>.href", dcap.time_link);
         pt.put("DeviceCapability.UsagePointListLink.<xmlattr>.href", dcap.usage_point_list_link);
         pt.put("DeviceCapability.MirrorUsagePointListLink.<xmlattr>.href", dcap.mirror_usage_point_list_link);
@@ -261,10 +262,78 @@ namespace xml
             dcap->messaging_program_list_link = pt.get<std::string>("DeviceCapability.MessagingProgramListLink.<xmlattr>.href", "");
             dcap->prepayment_list_link = pt.get<std::string>("DeviceCapability.PrepaymentListLink.<xmlattr>.href", "");
             dcap->response_set_list_link = pt.get<std::string>("DeviceCapability.ResponseSetListLink.<xmlattr>.href", "");
+            dcap->tariff_profile_list_link = pt.get<std::string>("DeviceCapability.TariffProfileListLink.<xmlattr>.href", "");
             dcap->time_link = pt.get<std::string>("DeviceCapability.TimeLink.<xmlattr>.href", "");
             dcap->usage_point_list_link = pt.get<std::string>("DeviceCapability.UsagePointListLink.<xmlattr>.href", "");
             dcap->mirror_usage_point_list_link = pt.get<std::string>("DeviceCapability.MirrorUsagePointListLink.<xmlattr>.href", "");
             dcap->self_device_link = pt.get<std::string>("DeviceCapability.SelfDeviceLink.<xmlattr>.href", "");
+            return true;
+        }
+
+        return false;
+    }
+    
+    std::string Serialize(const sep::EndDevice &edev) 
+    {
+        boost::property_tree::ptree pt;
+        pt.put("EndDevice.<xmlattr>.subscribable", xml::util::ToUnderlyingType(edev.subscribable));
+        pt.put("EndDevice.<xmlattr>.href", edev.href);
+        pt.put("EndDevice.ConfigurationLink.<xmlattr>.href", edev.configuration_link);
+        pt.put("EndDevice.DERListLink.<xmlattr>.href", edev.der_list_link);
+        pt.put("EndDevice.deviceCategory",  xml::util::Hexify(xml::util::ToUnderlyingType(edev.device_category)));
+        pt.put("EndDevice.DeviceInformationLink.<xmlattr>.href", edev.device_information_link);
+        pt.put("EndDevice.DeviceStatusLink.<xmlattr>.href", edev.device_status_link);
+        pt.put("EndDevice.FileStatusLink.<xmlattr>.href", edev.file_status_link);
+        pt.put("EndDevice.IPInterfaceListLink.<xmlattr>.href", edev.ip_interface_list_link);
+        pt.put("EndDevice.lFDI", edev.lfdi);
+        pt.put("EndDevice.LoadShedAvailabilityListLink.<xmlattr>.href", edev.load_shed_availability_list_link);
+        pt.put("EndDevice.LogEventListLink.<xmlattr>.href", edev.log_event_list_link);
+        pt.put("EndDevice.PowerStatusLink.<xmlattr>.href", edev.power_status_link);
+        pt.put("EndDevice.sFDI", edev.sfdi);
+        pt.put("EndDevice.changedTime", edev.changed_time);
+        pt.put("EndDevice.enabled", edev.enabled);
+        pt.put("EndDevice.FlowReservationRequestListLink.<xmlattr>.href", edev.flow_reservation_request_list_link);
+        pt.put("EndDevice.FlowReservationResponseListLink.<xmlattr>.href", edev.flow_reservation_response_list_link);
+        pt.put("EndDevice.FunctionSetAssignmentsListLink.<xmlattr>.href", edev.function_set_assignment_list_link);
+        pt.put("EndDevice.postRate", edev.post_rate);
+        pt.put("EndDevice.RegistrationLink.<xmlattr>.href", edev.registration_link);
+        pt.put("EndDevice.SubscriptionListLink.<xmlattr>.href", edev.subscription_list_link);
+
+        xml::util::SetSchema(&pt);
+        return xml::util::Stringify(pt); 
+    }
+    
+    bool Parse(const std::string &xml_str, sep::EndDevice *edev) 
+    {
+        boost::property_tree::ptree pt = xml::util::Treeify(xml_str);
+
+        if (validator.ValidateXml(xml::util::Stringify(pt)))
+        {
+            edev->subscribable = static_cast<sep::SubscribableType>(
+                pt.get<uint8_t>("EndDevice.<xmlattr>.subscribable", 0)
+            );
+            edev->href = pt.get<std::string>("EndDevice.<xmlattr>.href", "");
+            edev->configuration_link = pt.get<std::string>("EndDevice.ConfigurationLink.<xmlattr>.href", "");
+            edev->der_list_link = pt.get<std::string>("EndDevice.DERListLink.<xmlattr>.href", "");
+            edev->device_category = static_cast<sep::DeviceCategoryType>(
+                xml::util::Dehexify<uint32_t>(pt.get<std::string>("EndDevice.deviceCategory", "00"))
+            );
+            edev->device_information_link = pt.get<std::string>("EndDevice.DeviceInformationLink.<xmlattr>.href", "");
+            edev->device_status_link = pt.get<std::string>("EndDevice.DeviceStatusLink.<xmlattr>.href", "");
+            edev->file_status_link = pt.get<std::string>("EndDevice.FileStatusLink.<xmlattr>.href", "");
+            edev->ip_interface_list_link = pt.get<std::string>("EndDevice.IPInterfaceListLink.<xmlattr>.href", "");
+            edev->lfdi = pt.get<std::string>("EndDevice.lFDI", "");
+            edev->load_shed_availability_list_link = pt.get<std::string>("EndDevice.LoadShedAvailabilityListLink.<xmlattr>.href", "");
+            edev->log_event_list_link = pt.get<std::string>("EndDevice.LogEventListLink.<xmlattr>.href", "");
+            edev->power_status_link = pt.get<std::string>("EndDevice.PowerStatusLink.<xmlattr>.href", "");
+            edev->sfdi = pt.get<uint8_t>("EndDevice.sFDI", 0);
+            edev->changed_time = pt.get<sep::TimeType>("EndDevice.changedTime", 0);
+            edev->enabled = pt.get<bool>("EndDevice.enabled", false);
+            edev->flow_reservation_request_list_link = pt.get<std::string>("EndDevice.FlowReservationRequestListLink.<xmlattr>.href", "");
+            edev->flow_reservation_response_list_link = pt.get<std::string>("EndDevice.FlowReservationResponseListLink.<xmlattr>.href", "");
+            edev->post_rate = pt.get<uint32_t>("EndDevice.postRate", 0);
+            edev->registration_link = pt.get<std::string>("EndDevice.RegistrationLink.<xmlattr>.href", "");
+            edev->subscription_list_link = pt.get<std::string>("EndDevice.SubscriptionListLink.<xmlattr>.href", "");
             return true;
         }
 

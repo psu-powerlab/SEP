@@ -49,3 +49,24 @@ TEST_F(TestDeviceCapabilityXML, IsAdapterValid)
     EXPECT_TRUE(xml::Parse(xml_str, dcap));
     delete dcap;
 }
+
+TEST_F(TestDeviceCapabilityXML, IsAdapterTranslationAccurate) 
+{   
+    sep::DeviceCapability *dcap = new sep::DeviceCapability;
+    xml::Parse(xml_str, dcap);
+    EXPECT_EQ(dcap->poll_rate, 900);
+    EXPECT_EQ(dcap->href, "http://uri1");
+    EXPECT_EQ(dcap->customer_account_list_link, "http://uri1");
+    EXPECT_EQ(dcap->demand_response_program_list_link, "http://uri1");
+    EXPECT_EQ(dcap->der_program_list_link, "http://uri1");
+    EXPECT_EQ(dcap->file_list_link, "http://uri1");
+    EXPECT_EQ(dcap->messaging_program_list_link, "http://uri1");
+    EXPECT_EQ(dcap->prepayment_list_link, "http://uri1");
+    EXPECT_EQ(dcap->response_set_list_link, "http://uri1");
+    EXPECT_EQ(dcap->tariff_profile_list_link, "http://uri1");
+    EXPECT_EQ(dcap->time_link, "http://uri1");
+    EXPECT_EQ(dcap->usage_point_list_link, "http://uri1");
+    EXPECT_EQ(dcap->mirror_usage_point_list_link, "http://uri1");
+    EXPECT_EQ(dcap->self_device_link, "http://uri1");
+    delete dcap;
+}
