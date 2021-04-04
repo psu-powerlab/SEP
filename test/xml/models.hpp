@@ -4,3 +4,4 @@
 #include <sep/device_capability.hpp>
 #include <sep/end_device.hpp>
 #include <sep/self_device.hpp>
+#include <sep/time.hpp>

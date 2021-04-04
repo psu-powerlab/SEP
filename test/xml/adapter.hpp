@@ -46,6 +46,10 @@ namespace xml
     // End Device
     std::string Serialize(const sep::EndDevice &edev);
     bool Parse(const std::string &xml_str, sep::EndDevice *edev);
+
+    // Self Device
+    std::string Serialize(const sep::SelfDevice &sdev);
+    bool Parse(const std::string &xml_str, sep::SelfDevice *sdev);
 } // namespace xml
 
 #endif // __ADAPTER_H__

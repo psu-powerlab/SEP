@@ -56,6 +56,8 @@ TEST_F(TestEndDeviceXML, IsAdapterTranslationAccurate)
     xml::Parse(xml_str, edev);
     EXPECT_EQ(xml::util::ToUnderlyingType(edev->subscribable), 0);
     EXPECT_EQ(edev->href, "http://uri1");
+    EXPECT_EQ(edev->configuration_link, "http://uri1");
+    EXPECT_EQ(edev->der_list_link, "http://uri1");
     EXPECT_EQ(xml::util::ToUnderlyingType(edev->device_category), 0x0FB7);
     EXPECT_EQ(edev->device_information_link, "http://uri1");
     EXPECT_EQ(edev->device_status_link, "http://uri1");
@@ -68,6 +70,9 @@ TEST_F(TestEndDeviceXML, IsAdapterTranslationAccurate)
     EXPECT_EQ(edev->sfdi, 0);
     EXPECT_EQ(edev->changed_time, 1);
     EXPECT_EQ(edev->enabled, true);
+    EXPECT_EQ(edev->flow_reservation_request_list_link, "http://uri1");
+    EXPECT_EQ(edev->flow_reservation_response_list_link, "http://uri1");
+    EXPECT_EQ(edev->function_set_assignment_list_link, "http://uri1");
     EXPECT_EQ(edev->post_rate, 0);
     EXPECT_EQ(edev->registration_link, "http://uri1");
     EXPECT_EQ(edev->subscription_list_link, "http://uri1");
