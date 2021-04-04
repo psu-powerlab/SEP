@@ -5,9 +5,9 @@
 #include <climits>
 #include <algorithm>
 #include <gtest/gtest.h>
-#include "models.hpp"
-#include "adapter.hpp"
-#include "xml_validator.hpp"
+#include <sep/models.hpp>
+#include <xml/adapter.hpp>
+#include <xml/xml_validator.hpp>
 
 class TestFlowReservationResponseXML : public ::testing::Test 
 {

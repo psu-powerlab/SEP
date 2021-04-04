@@ -5,9 +5,9 @@
 #include <climits>
 #include <algorithm>
 #include <gtest/gtest.h>
-#include "models.hpp"
-#include "adapter.hpp"
-#include "xml_validator.hpp"
+#include <sep/models.hpp>
+#include <xml/adapter.hpp>
+#include <xml/xml_validator.hpp>
 
 class TestEndDeviceXML : public ::testing::Test 
 {
@@ -72,7 +72,7 @@ TEST_F(TestEndDeviceXML, IsAdapterTranslationAccurate)
     EXPECT_EQ(edev->enabled, true);
     EXPECT_EQ(edev->flow_reservation_request_list_link, "http://uri1");
     EXPECT_EQ(edev->flow_reservation_response_list_link, "http://uri1");
-    EXPECT_EQ(edev->function_set_assignment_list_link, "http://uri1");
+    EXPECT_EQ(edev->function_set_assignments_list_link, "http://uri1");
     EXPECT_EQ(edev->post_rate, 0);
     EXPECT_EQ(edev->registration_link, "http://uri1");
     EXPECT_EQ(edev->subscription_list_link, "http://uri1");

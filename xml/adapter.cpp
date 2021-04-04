@@ -1,5 +1,5 @@
-#include "adapter.hpp"
-#include "xml_validator.hpp"
+#include "include/xml/adapter.hpp"
+#include "include/xml/xml_validator.hpp"
 #include <iostream>
 
 static XmlValidator validator;
@@ -389,6 +389,45 @@ namespace xml
             sdev->log_event_list_link = pt.get<std::string>("SelfDevice.LogEventListLink.<xmlattr>.href", "");
             sdev->power_status_link = pt.get<std::string>("SelfDevice.PowerStatusLink.<xmlattr>.href", "");
             sdev->sfdi = pt.get<uint8_t>("SelfDevice.sFDI", 0);
+            return true;
+        }
+
+        return false;
+    }
+    
+    std::string Serialize(const sep::Time &time) 
+    {
+        boost::property_tree::ptree pt;
+        pt.put("Time.<xmlattr>.pollRate", time.poll_rate);
+        pt.put("Time.<xmlattr>.href", time.href);
+        pt.put("Time.currentTime", time.current_time);
+        pt.put("Time.dstEndTime", time.dst_end_time);
+        pt.put("Time.dstOffset", time.dst_offset);
+        pt.put("Time.dstStartTime", time.dst_start_time);
+        pt.put("Time.localTime", time.local_time);
+        pt.put("Time.quality", time.quality);
+        pt.put("Time.tzOffset", time.tz_offset);
+
+        xml::util::SetSchema(&pt);
+        return xml::util::Stringify(pt);
+    }
+    
+    bool Parse(const std::string &xml_str, sep::Time *time) 
+    {
+        boost::property_tree::ptree pt = xml::util::Treeify(xml_str);
+
+        if (validator.ValidateXml(xml::util::Stringify(pt)))
+        {
+            time->poll_rate = pt.get<uint32_t>("Time.<xmlattr>.pollRate", 900);
+            time->href = pt.get<std::string>("Time.<xmlattr>.href", "");
+            time->current_time = pt.get<sep::TimeType>("Time.currentTime", 0);
+            time->dst_end_time = pt.get<sep::TimeType>("Time.dstEndTime", 0);
+            time->dst_offset = pt.get<sep::TimeOffsetType>("Time.dstOffset", 0);
+            time->dst_start_time = pt.get<sep::TimeType>("Time.dstStartTime", 0);
+            time->local_time = pt.get<sep::TimeType>("Time.dstStartTime", 0);
+            time->quality = pt.get<uint8_t>("Time.quality", 7);
+            time->tz_offset = pt.get<sep::TimeOffsetType>("Time.tzOffset", 7);
+
             return true;
         }
 

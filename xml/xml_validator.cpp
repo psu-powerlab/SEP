@@ -1,5 +1,5 @@
 #include <sstream>
-#include "xml_validator.hpp"
+#include "include/xml/xml_validator.hpp"
 
 XmlValidator::XmlValidator()
 {
