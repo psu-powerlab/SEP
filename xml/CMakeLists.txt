@@ -1,3 +1,5 @@
+include(FindXercesC)
+find_package(XercesC REQUIRED)
 find_package(Boost REQUIRED)
 
 set(COMPONENT_NAME XML)
@@ -10,7 +12,7 @@ add_library(${COMPONENT_NAME} STATIC
 # Create ALIAS targets.
 add_library( ${PROJECT_NAME}::${COMPONENT_NAME} ALIAS ${COMPONENT_NAME} )
 
-target_link_libraries(${COMPONENT_NAME} Model Boost::boost)
+target_link_libraries(${COMPONENT_NAME} Model Boost::boost ${XercesC_LIBRARY})
 
 target_include_directories(
     ${COMPONENT_NAME} PUBLIC
@@ -18,6 +20,7 @@ target_include_directories(
     $<INSTALL_INTERFACE:include>
     ${Model_INCLUDE_DIRS}
     ${Boost_INCLUDE_DIRS}
+    ${XercesC_INCLUDE_DIR}
 )
 
 # install the target and create export-set

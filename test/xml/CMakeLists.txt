@@ -47,11 +47,10 @@ add_executable (tests
     time_test.cpp
 )
 
-target_link_libraries(tests gtest gtest_main SEP::Model SEP::XML ${XercesC_LIBRARY} Boost::boost pthread)
+target_link_libraries(tests gtest gtest_main SEP::Model SEP::XML Boost::boost pthread)
 target_include_directories(
     tests PUBLIC 
     ${SEP_INCLUDE_DIRS}
-    ${XercesC_INCLUDE_DIR}
     ${Boost_INCLUDE_DIRS}
     ${googletest_INCLUDE_DIRS}
 )
