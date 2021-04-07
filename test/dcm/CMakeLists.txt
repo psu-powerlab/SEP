@@ -19,7 +19,6 @@ set(CMAKE_CXX_STANDARD_REQUIRED True)
 include(FetchContent)
 find_package(Boost REQUIRED)
 
-
 FetchContent_Declare(
     SEP
     GIT_REPOSITORY https://github.com/psu-powerlab/SEP.git

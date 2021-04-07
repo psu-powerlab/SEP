@@ -6,9 +6,13 @@ RUN apt-get update -y \
   && mkdir ~/temp
 RUN cd ~/temp && wget https://github.com/Kitware/CMake/releases/download/v3.18.4/cmake-3.18.4.tar.gz \
   && tar -xf cmake-3.18.4.tar.gz \
-  && cd cmake-3.18.4 && cmake . && make && make install \
+  && cd cmake-3.18.4 && cmake . && make && make install
+RUN cd ~/temp && wget https://mirror.jframeworks.com/apache//xerces/c/3/sources/xerces-c-3.2.3.tar.gz   
+  && tar -xf xerces-c-3.2.3.tar.gz \
+  && cd xerces-c-3.2.3 && ./configure --prefix=/usr && make \
+  && sudo make install \
   && rm -rf ~/temp
-
+  
 FROM builder AS main
 
 COPY . /app
