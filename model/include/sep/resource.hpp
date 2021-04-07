@@ -9,6 +9,7 @@ namespace sep
     struct Resource
     {
         std::string href; // optional
+        virtual void ForPolymorphismOnly (){};
     };
 }; // namespace sep
 
