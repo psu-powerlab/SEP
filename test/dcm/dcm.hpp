@@ -3,50 +3,56 @@
 #include <iostream>
 #include <sep/models.hpp>
 #include <vector>
+#include <memory>
 
 struct Entity
 {
-    virtual void Update (double elapsed_time) {};
+    virtual void Update (double elapsed_time) = 0;
 };
-
-struct Player : Entity
-{
-};
-
 
 class DCM : public Entity
 {
 public:
     DCM()
     {
-        sep::DeviceCapability dcap;
-        dcap.href = "https://gsp.com/dcap";
-        dcap.poll_rate = 1500;
-        dcap.end_device_list_link = "https://gsp.com/edev";
-
-        Player p;
-        resource_pool_.emplace_back(p);
+        sep::Resource *dcap = new sep::DeviceCapability;
+        sep::Resource *edev = new sep::EndDevice;
+        sep::Resource *sdev = new sep::SelfDevice;
+        resource_pool_.emplace_back(dcap);
+        resource_pool_.emplace_back(edev);
+        resource_pool_.emplace_back(sdev);
     };
-    ~DCM(){};
+    ~DCM()
+    {
+    };
     void Update (double elapsed_time)
     {
         for (auto resource : resource_pool_)
         {
-            
-            if ( Player *dcap = dynamic_cast<Player*>(&resource) ) {
-                
-            } else {
-                // different derived class
+            std::cout << elapsed_time << std::endl;
+            if ( sep::DeviceCapability *dcap = dynamic_cast<sep::DeviceCapability*>(resource) ) 
+            {
+                dcap->poll_rate = 9000;
+                sep::DeviceCapability *dcap2 = dynamic_cast<sep::DeviceCapability*>(resource);
+                std::cout << dcap2->poll_rate << std::endl;
+            } 
+            else if (sep::EndDevice *edev = dynamic_cast<sep::EndDevice*>(resource))
+            {
+                edev->changed_time = 6000;
+            } 
+            else if (sep::SelfDevice *sdev = dynamic_cast<sep::SelfDevice*>(resource))
+            {
+                sdev->poll_rate = 3000;
+            }
+            else
+            {
+                std::cout << "Cannot be dynamic cast" << std::endl;
             }
         }
     };
 
-    void ResourceHandler (sep::DeviceCapability &dcap)
-    {
-        std::cout << dcap.poll_rate << std::endl;
-    }
 private:
-    std::vector<Entity> resource_pool_;
+    std::vector<sep::Resource*> resource_pool_;
 };
 
 
