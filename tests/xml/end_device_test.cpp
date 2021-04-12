@@ -15,7 +15,7 @@ protected:
     void SetUp() override 
     {        
         // read in the sample file
-        std::ifstream ifs("./sep_examples/EndDevice.xml");
+        std::ifstream ifs("./EndDevice.xml");
         if (ifs)
         {
             std::ostringstream oss;

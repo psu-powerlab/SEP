@@ -15,7 +15,7 @@ protected:
     void SetUp() override 
     {        
         // read in the sample file
-        std::ifstream ifs("./sep_examples/ActivePower.xml");
+        std::ifstream ifs("./ActivePower.xml");
         if (ifs)
         {
             std::ostringstream oss;

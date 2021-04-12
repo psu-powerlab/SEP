@@ -15,7 +15,7 @@ protected:
     void SetUp() override 
     {        
         // read in the sample file
-        std::ifstream ifs("./sep_examples/FlowReservationRequest.xml");
+        std::ifstream ifs("./FlowReservationRequest.xml");
         if (ifs)
         {
             std::ostringstream oss;

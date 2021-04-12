@@ -15,7 +15,7 @@ protected:
     void SetUp() override 
     {        
         // read in the sample file
-        std::ifstream ifs("./sep_examples/Time.xml");
+        std::ifstream ifs("./Time.xml");
         if (ifs)
         {
             std::ostringstream oss;
